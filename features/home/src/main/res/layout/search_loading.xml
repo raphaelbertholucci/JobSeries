@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shimmer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="3"
+        android:useDefaultMargins="true">
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+        <include layout="@layout/search_loading_placeholder_item" />
+
+    </GridLayout>
+
+</com.facebook.shimmer.ShimmerFrameLayout>

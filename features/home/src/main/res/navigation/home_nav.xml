@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav"
+    app:startDestination="@id/fragment_home">
+
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.bertholucci.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/to_show_details"
+            app:destination="@id/fragment_show_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_show_details"
+        android:name="com.bertholucci.home.ShowDetailsFragment"
+        tools:layout="@layout/fragment_show_details">
+        <action
+            android:id="@+id/to_episode_details"
+            app:destination="@id/fragment_episode_details" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_episode_details"
+        android:name="com.bertholucci.home.EpisodeDetailsFragment"
+        tools:layout="@layout/fragment_episode_details">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>
