@@ -1,7 +1,8 @@
 package com.bertholucci.data.mapper
 
+import com.bertholucci.data.model.EpisodeResponse
 import com.bertholucci.data.model.ShowResponse
-import com.bertholucci.domain.model.EpisodesEmbedded
+import com.bertholucci.domain.model.Episode
 import com.bertholucci.domain.model.Show
 
 object ShowMapper : BaseMapper<ShowResponse, Show> {
@@ -23,13 +24,27 @@ object ShowMapper : BaseMapper<ShowResponse, Show> {
             rating = RatingMapper.mapToDomain(response.rating),
             summary = response.summary ?: "",
             image = ImageMapper.mapToDomain(response.image),
-            embedded = EpisodesEmbedded(episodes = response.embedded?.episodes?.map { episode ->
-                EpisodeMapper.mapToDomain(episode)
-            } ?: listOf())
+            episodes = episodesMapper(response.embedded?.episodes)
         )
     }
 
     fun mapToDomainList(responseList: List<ShowResponse>) = responseList.map { response ->
         mapToDomain(response)
+    }
+
+    private fun episodesMapper(episodesResponse: List<EpisodeResponse>?): List<Episode> {
+        val episodes = mutableListOf<Episode>()
+        var previousSeason = 0
+
+        episodesResponse?.forEach { episode ->
+            if (episode.season == previousSeason) {
+                episodes.add(EpisodeMapper.mapToDomain(episode))
+            } else {
+                episodes.add(Episode(season = episode.season ?: 0))
+                episodes.add(EpisodeMapper.mapToDomain(episode))
+                previousSeason = episode.season ?: 0
+            }
+        }
+        return episodes
     }
 }

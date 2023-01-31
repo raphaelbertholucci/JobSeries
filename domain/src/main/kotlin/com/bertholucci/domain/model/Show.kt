@@ -13,7 +13,7 @@ data class Show(
     val rating: Rating,
     val summary: String,
     val image: Image,
-    val embedded: EpisodesEmbedded
+    val episodes: List<Episode>
 )
 
 data class Schedule(
@@ -22,25 +22,22 @@ data class Schedule(
 )
 
 data class Rating(
-    val average: String
+    val average: String = ""
 )
 
 data class Image(
-    val medium: String
-)
-
-data class EpisodesEmbedded(
-    val episodes: List<Episode>
+    val medium: String = ""
 )
 
 data class Episode(
-    val id: Int,
-    val name: String,
-    val number: String,
-    val season: String,
-    val airDate: String,
-    val airTime: String,
-    val rating: Rating,
-    val summary: String,
-    val image: Image
+    val id: Int = 0,
+    val name: String = "",
+    val number: Int = 0,
+    val season: Int = 0,
+    val runtime: String = "",
+    val airDate: String = "",
+    val airTime: String = "",
+    val rating: Rating = Rating(),
+    val summary: String = "",
+    val image: Image = Image()
 )

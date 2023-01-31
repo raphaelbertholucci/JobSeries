@@ -12,8 +12,9 @@ object EpisodeMapper : BaseMapper<EpisodeResponse, Episode> {
         return Episode(
             id = response.id,
             name = response.name ?: "",
-            number = response.number ?: "",
-            season = response.season ?: "",
+            number = response.number ?: 0,
+            season = response.season ?: 0,
+            runtime = response.runtime ?: "",
             airDate = response.airDate ?: "",
             airTime = response.airTime ?: "",
             rating = RatingMapper.mapToDomain(response.rating),

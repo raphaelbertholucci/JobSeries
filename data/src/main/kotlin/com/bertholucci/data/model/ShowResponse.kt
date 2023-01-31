@@ -32,15 +32,15 @@ class ImageResponse(
 )
 
 class EpisodesEmbeddedResponse(
-    @SerializedName("episodes") val episodes: List<EpisodeResponse>?,
-    @SerializedName("images") val images: List<ImageResponse>?
+    @SerializedName("episodes") val episodes: List<EpisodeResponse>?
 )
 
 class EpisodeResponse(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String?,
-    @SerializedName("number") val number: String?,
-    @SerializedName("season") val season: String?,
+    @SerializedName("number") val number: Int?,
+    @SerializedName("season") val season: Int?,
+    @SerializedName("runtime") val runtime: String?,
     @SerializedName("airDate") val airDate: String?,
     @SerializedName("airTime") val airTime: String?,
     @SerializedName("rating") val rating: RatingResponse?,

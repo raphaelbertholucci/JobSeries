@@ -16,7 +16,3 @@ fun Show.getAirDate(): String {
 fun Schedule.getSchedule(): String {
     return "Every ${days.joinToString(", ")} at $time"
 }
-
-fun Show.getBackgroundImage() {
-    embedded.episodes
-}

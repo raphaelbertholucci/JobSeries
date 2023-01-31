@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/tiny_margin"
     android:paddingVertical="@dimen/little_margin">
 
     <androidx.cardview.widget.CardView
@@ -30,14 +31,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small_margin"
-        app:layout_constraintBottom_toTopOf="@id/tv_season"
+        app:layout_constraintBottom_toTopOf="@id/tv_episode"
         app:layout_constraintStart_toEndOf="@id/cv_poster"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="Pilot" />
 
     <TextView
-        android:id="@+id/tv_season"
+        android:id="@+id/tv_episode"
         style="@style/Caption.Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

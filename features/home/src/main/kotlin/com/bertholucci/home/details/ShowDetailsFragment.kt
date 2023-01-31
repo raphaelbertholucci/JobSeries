@@ -74,9 +74,10 @@ class ShowDetailsFragment : Fragment() {
             tvRuntime.text = "${show.averageRuntime}m"
             tvLanguage.text = show.language
             tvReleaseDate.text = show.getAirDate()
+            tvSummary.text = Html.fromHtml(show.summary, Html.FROM_HTML_MODE_COMPACT)
             setupGenreAdapter(show.genres)
             setupSchedule(show.schedule)
-            tvSummary.text = Html.fromHtml(show.summary, Html.FROM_HTML_MODE_COMPACT)
+            setupEpisodes(show)
         }
     }
 
@@ -96,5 +97,14 @@ class ShowDetailsFragment : Fragment() {
         }
 
         binding.tvSchedule.text = schedule.getSchedule()
+    }
+
+    private fun setupEpisodes(show: Show) {
+        binding.rvEpisodes.adapter = EpisodesAdapter(
+            episodes = show.episodes,
+            onClick = {
+                ShowDetailsFragmentDirections.toEpisodeDetails(it.id)
+            }
+        )
     }
 }
