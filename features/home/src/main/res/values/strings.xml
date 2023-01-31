@@ -2,8 +2,7 @@
     <string name="app_name">JobSeries</string>
 
     <string name="search_example">Shows</string>
-    <string name="search_tracks_loaded">Shows loaded!</string>
-    <string name="search_label_hint">Type at least 3 words\nto begin the search</string>
+    <string name="search_shows_loaded">Shows loaded!</string>
     <string name="search_empty">Sorry!\nWe didn\'t found any results!</string>
     <string name="search_popularity">Popularity</string>
     <string name="search_sort_popularity_by">Sort popularity by:</string>
@@ -12,4 +11,14 @@
     <string name="search_none">None</string>
 
     <string name="error_generic">Oops! Something went wrong!\nPlease, try again later.</string>
+
+    <!--    SHOW DETAILS-->
+    <string name="show_summary">Summary</string>
+    <string name="show_schedule">Schedule</string>
+    <string name="show_episodes">Episodes</string>
+
+    <plurals name="schedule">
+        <item quantity="one">%s at %s</item>
+        <item quantity="other">%s and %s at %s</item>
+    </plurals>
 </resources>

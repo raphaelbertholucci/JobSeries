@@ -25,6 +25,10 @@
         <item name="android:textColor">@color/color_white</item>
     </style>
 
+    <style name="Body.Bold">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+    </style>
+
     <style name="Body.Description">
         <item name="android:textColor">@color/color_white_80</item>
     </style>
@@ -42,12 +46,8 @@
         <item name="android:textColor">@color/color_white_80</item>
     </style>
 
-    <style name="Caption.Blue">
+    <style name="Caption.Highlight">
         <item name="android:textColor">@color/color_caption</item>
-    </style>
-
-    <style name="Caption.White">
-        <item name="android:textColor">@color/color_white</item>
     </style>
 
     <style name="Error">

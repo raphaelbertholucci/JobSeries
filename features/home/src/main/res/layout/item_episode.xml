@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="@dimen/little_margin"
-    android:background="@drawable/bg_button_rounded_black"
-    android:padding="@dimen/small_margin">
+    android:paddingVertical="@dimen/little_margin">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_poster"
-        android:layout_width="@dimen/item_show_width"
-        android:layout_height="@dimen/item_show_height"
+        android:layout_width="@dimen/show_episode_poster_width"
+        android:layout_height="@dimen/show_episode_poster_height"
         android:background="@color/color_white"
         app:cardCornerRadius="@dimen/medium_radius"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,50 +29,35 @@
         style="@style/Body"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginEnd="@dimen/default_margin"
-        app:layout_constraintBottom_toTopOf="@id/tv_year"
-        app:layout_constraintEnd_toStartOf="@id/tv_rate"
+        android:layout_marginStart="@dimen/small_margin"
+        app:layout_constraintBottom_toTopOf="@id/tv_season"
         app:layout_constraintStart_toEndOf="@id/cv_poster"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:text="Avengers" />
+        tools:text="Pilot" />
 
     <TextView
-        android:id="@+id/tv_year"
+        android:id="@+id/tv_season"
         style="@style/Caption.Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/tiny_margin"
-        app:layout_constraintBottom_toTopOf="@id/tv_runtime"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/tv_title"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
-        tools:text="2015 - 2022" />
+        tools:text="Season 01 - Episode 01" />
 
     <TextView
         android:id="@+id/tv_runtime"
         style="@style/Caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/little_margin"
-        android:background="@drawable/bg_white_stroke"
+        android:background="@drawable/bg_button_rounded_white_alpha"
         android:paddingHorizontal="@dimen/little_margin"
         android:paddingVertical="@dimen/tiny_margin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_title"
-        app:layout_constraintTop_toBottomOf="@id/tv_year"
-        tools:text="60m" />
-
-    <TextView
-        android:id="@+id/tv_rate"
-        style="@style/Caption.Highlight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawablePadding="@dimen/little_margin"
-        app:drawableStartCompat="@drawable/ic_star"
-        app:layout_constraintBottom_toBottomOf="@id/tv_year"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_year"
-        tools:text="9.9" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="60m" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

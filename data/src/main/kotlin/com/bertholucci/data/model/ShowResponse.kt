@@ -32,7 +32,8 @@ class ImageResponse(
 )
 
 class EpisodesEmbeddedResponse(
-    @SerializedName("episodes") val episodes: List<EpisodeResponse>?
+    @SerializedName("episodes") val episodes: List<EpisodeResponse>?,
+    @SerializedName("images") val images: List<ImageResponse>?
 )
 
 class EpisodeResponse(

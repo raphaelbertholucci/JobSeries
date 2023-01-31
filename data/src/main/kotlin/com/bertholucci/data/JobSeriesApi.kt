@@ -12,8 +12,11 @@ interface JobSeriesApi {
     suspend fun getShows(@Query("page") page: Int): List<ShowResponse>
 
     @GET("shows/{id}")
-    suspend fun getShowsById(@Path("id") id: Int): ShowResponse
+    suspend fun getShowById(
+        @Path("id") id: Int,
+        @Query("embed") embed: String
+    ): ShowResponse
 
     @GET("episodes/{id}")
-    suspend fun getEpisodesById(@Path("id") id: Int): EpisodeResponse
+    suspend fun getEpisodeById(@Path("id") id: Int): EpisodeResponse
 }

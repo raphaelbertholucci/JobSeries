@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_genre"
+    style="@style/Caption"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/little_margin"
+    android:layout_marginBottom="@dimen/little_margin"
+    android:background="@drawable/bg_white_stroke"
+    android:paddingHorizontal="@dimen/little_margin"
+    android:paddingVertical="@dimen/tiny_margin"
+    tools:text="Action" />

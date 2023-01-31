@@ -1,4 +1,4 @@
-package com.bertholucci.home
+package com.bertholucci.home.home
 
 import android.os.Bundle
 import android.util.Log
@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import com.bertholucci.domain.helper.fold
 import com.bertholucci.domain.model.Show
 import com.bertholucci.home.databinding.FragmentHomeBinding
+import com.bertholucci.home.extensions.navProvider
+import com.bertholucci.home.extensions.navigateWithAnimation
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
+    private val navController: NavController by navProvider()
     private val viewModel: HomeViewModel by viewModel()
 
     private val binding by lazy {
@@ -48,7 +52,15 @@ class HomeFragment : Fragment() {
             list.isEmpty() -> display(empty = true)
             else -> {
                 display(content = true)
-                binding.rvTracks.adapter = HomeAdapter(shows = list)
+                binding.rvTracks.adapter = HomeAdapter(
+                    shows = list,
+                    onClick = { show ->
+                        navController.navigateWithAnimation(
+                            HomeFragmentDirections.toShowDetails(
+                                show.id
+                            )
+                        )
+                    })
             }
         }
     }

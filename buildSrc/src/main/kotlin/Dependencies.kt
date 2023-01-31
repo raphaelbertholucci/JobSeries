@@ -19,8 +19,9 @@ object SupportDependencies {
     val navigation_fragment by lazy { "androidx.navigation:navigation-fragment-ktx:${SupportVersions.navigation_version}" }
     val coil by lazy { "io.coil-kt:coil:${SupportVersions.coil_version}" }
     val shimmer by lazy { "com.facebook.shimmer:shimmer:${SupportVersions.shimmer_version}" }
-    val splash by lazy { "androidx.core:core-splashscreen:${SupportVersions.splash}" }
-    val swipe_refresh by lazy { "androidx.swiperefreshlayout:swiperefreshlayout:${SupportVersions.swipe_refresh_layout}" }
+    val splash by lazy { "androidx.core:core-splashscreen:${SupportVersions.splash_version}" }
+    val swipe_refresh by lazy { "androidx.swiperefreshlayout:swiperefreshlayout:${SupportVersions.swipe_refresh_layout_version}" }
+    val flexbox by lazy { "com.google.android.flexbox:flexbox:${SupportVersions.flexbox_version}" }
 }
 
 object NetworkDependencies {

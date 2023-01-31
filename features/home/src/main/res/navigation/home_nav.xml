@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_home"
-        android:name="com.bertholucci.home.HomeFragment"
+        android:name="com.bertholucci.home.home.HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/to_show_details"
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/fragment_show_details"
-        android:name="com.bertholucci.home.ShowDetailsFragment"
+        android:name="com.bertholucci.home.details.ShowDetailsFragment"
         tools:layout="@layout/fragment_show_details">
         <action
             android:id="@+id/to_episode_details"

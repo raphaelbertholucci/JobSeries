@@ -13,19 +13,26 @@ class HomeRepositoryImpl(private val api: JobSeriesApi) : HomeRepository {
 
     override fun getShows(page: Int): Flow<List<Show>> {
         return flow {
-            emit(ShowMapper.mapToDomainList(api.getShows(page)))
+            emit(ShowMapper.mapToDomainList(responseList = api.getShows(page = page)))
         }
     }
 
     override fun getShowById(id: Int): Flow<Show> {
         return flow {
-            emit(ShowMapper.mapToDomain(api.getShowsById(id)))
+            emit(
+                ShowMapper.mapToDomain(
+                    api.getShowById(
+                        id = id,
+                        embed = "episodes"
+                    )
+                )
+            )
         }
     }
 
     override fun getEpisodeById(id: Int): Flow<Episode> {
         return flow {
-            emit(EpisodeMapper.mapToDomain(api.getEpisodesById(id)))
+            emit(EpisodeMapper.mapToDomain(api.getEpisodeById(id)))
         }
     }
 }

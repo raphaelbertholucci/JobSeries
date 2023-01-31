@@ -4,7 +4,7 @@ import android.app.Application
 import com.bertholucci.data.di.apiModule
 import com.bertholucci.data.di.repositoryModule
 import com.bertholucci.domain.di.domainModule
-import com.bertholucci.home.viewModelModule
+import com.bertholucci.home.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

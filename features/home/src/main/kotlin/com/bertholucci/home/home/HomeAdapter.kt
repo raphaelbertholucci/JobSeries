@@ -1,14 +1,21 @@
-package com.bertholucci.home
+package com.bertholucci.home.home
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bertholucci.domain.model.Show
+import com.bertholucci.home.R
+import com.bertholucci.home.ShowStatus
 import com.bertholucci.home.databinding.ItemHomeBinding
+import com.bertholucci.home.extensions.getAirDate
 import com.bertholucci.home.extensions.getYear
+import com.bertholucci.home.extensions.loadFromUrl
 
-class HomeAdapter(private val shows: List<Show>) :
+class HomeAdapter(
+    private val shows: List<Show>,
+    private val onClick: (Show) -> Unit
+) :
     RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
@@ -30,17 +37,13 @@ class HomeAdapter(private val shows: List<Show>) :
         fun bind(show: Show) {
             binding.ivPoster.loadFromUrl(show.image.medium)
             binding.tvTitle.text = show.name
-            binding.tvDescription.text = setupShowDescription(show)
+            binding.tvYear.text = show.getAirDate()
             binding.tvRuntime.text = "${show.averageRuntime}m"
-        }
+            binding.tvRate.text = show.rating.average
 
-        private fun setupShowDescription(show: Show): String {
-            var year = show.premiered.getYear()
-
-            if (show.status == ShowStatus.ENDED.value) {
-                year = year.plus(" - ${show.ended.getYear()}")
+            binding.root.setOnClickListener {
+                onClick.invoke(show)
             }
-            return year
         }
     }
 }

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_error" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tv_error"
         style="@style/Error"
         android:layout_width="wrap_content"

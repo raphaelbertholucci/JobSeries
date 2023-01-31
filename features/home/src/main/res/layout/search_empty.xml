@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_sad" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         style="@style/Body.Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

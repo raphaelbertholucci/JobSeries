@@ -1,4 +1,4 @@
-package com.bertholucci.home
+package com.bertholucci.home.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
