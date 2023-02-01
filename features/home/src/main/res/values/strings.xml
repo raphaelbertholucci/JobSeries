@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">JobSeries</string>
 
-    <string name="search_example">Shows</string>
+    <string name="search_example">Search Show</string>
     <string name="search_shows_loaded">Shows loaded!</string>
     <string name="search_empty">Sorry!\nWe didn\'t found any results!</string>
     <string name="search_popularity">Popularity</string>
@@ -16,6 +16,7 @@
     <string name="show_summary">Summary</string>
     <string name="show_schedule">Schedule</string>
     <string name="show_episodes">Episodes</string>
+    <string name="try_again">Try Again</string>
 
     <plurals name="schedule">
         <item quantity="one">%s at %s</item>

@@ -19,15 +19,17 @@ import kotlinx.coroutines.flow.onStart
 
 class ShowDetailsViewModel(showId: Int, private val useCase: GetShowById) : ViewModel() {
 
+    private val id = showId
+
     private val _show = MutableLiveData<JobSeriesResponse<Show>>()
     val show: LiveData<JobSeriesResponse<Show>>
         get() = _show
 
     init {
-        getShowById(showId = showId)
+        getShowById(showId = id)
     }
 
-    private fun getShowById(showId: Int) {
+    fun getShowById(showId: Int = id) {
         useCase(showId)
             .onStart { _show.showLoading() }
             .onCompletion { _show.hideLoading() }

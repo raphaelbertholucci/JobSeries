@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/medium_extra_margin"
+    android:visibility="gone">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_error" />
+
+    <TextView
+        android:id="@+id/tv_error"
+        style="@style/Error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:gravity="center"
+        android:text="@string/error_generic" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_try_again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_margin"
+        android:background="@drawable/bg_button_rounded_black_50"
+        android:paddingHorizontal="@dimen/medium_extra_margin"
+        android:text="@string/try_again"
+        android:textAllCaps="false" />
+
+</LinearLayout>

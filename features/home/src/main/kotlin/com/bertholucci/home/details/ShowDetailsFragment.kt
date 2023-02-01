@@ -2,12 +2,13 @@ package com.bertholucci.home.details
 
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bertholucci.domain.helper.fold
 import com.bertholucci.domain.model.Schedule
 import com.bertholucci.domain.model.Show
@@ -51,7 +52,9 @@ class ShowDetailsFragment : Fragment() {
         viewModel.show.observe(viewLifecycleOwner) { response ->
             response.fold(
                 error = ::handleError,
-                loading = {},
+                loading = {
+                    if (it) display(loading = true)
+                },
                 success = ::handleSuccess
             )
         }
@@ -61,10 +64,25 @@ class ShowDetailsFragment : Fragment() {
         binding.ivBack.setOnClickListener {
             activity?.onBackPressed()
         }
+
+        binding.error.btTryAgain.setOnClickListener {
+            viewModel.getShowById()
+        }
+    }
+
+    private fun display(
+        content: Boolean = false,
+        loading: Boolean = false,
+        error: Boolean = false
+    ) {
+        binding.content.isVisible = content
+        binding.loading.shimmer.isVisible = loading
+        binding.error.root.isVisible = error
     }
 
     private fun handleError(throwable: Throwable) {
-
+        Log.d("ERROR", throwable.message ?: "Error encountered on displaying the show!")
+        display(error = true)
     }
 
     private fun handleSuccess(show: Show) {
@@ -80,6 +98,7 @@ class ShowDetailsFragment : Fragment() {
             setupSchedule(show.schedule)
             setupEpisodes(show)
         }
+        display(content = true)
     }
 
     private fun setupGenreAdapter(list: List<String>) {

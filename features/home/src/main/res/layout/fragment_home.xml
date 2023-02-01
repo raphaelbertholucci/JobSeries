@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_start"
@@ -21,6 +22,7 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_search"
+        style="@style/Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin"
@@ -28,10 +30,8 @@
         android:background="@drawable/bg_white_stroke"
         android:hint="@string/search_example"
         android:padding="@dimen/small_margin"
-        android:textColor="@color/color_white"
         android:textColorHint="@color/color_white_80"
         android:textCursorDrawable="@null"
-        android:textSize="@dimen/small_text"
         app:layout_constraintEnd_toStartOf="@id/iv_sort"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toTopOf="parent" />
@@ -69,7 +69,7 @@
 
     <include
         android:id="@+id/loading"
-        layout="@layout/search_loading"
+        layout="@layout/loading_home"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/default_margin"
@@ -80,7 +80,7 @@
 
     <include
         android:id="@+id/error"
-        layout="@layout/search_error"
+        layout="@layout/error_search"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
             binding.swipe.isRefreshing = false
             response.fold(
                 error = ::handleError,
-                loading = { binding.loading.shimmer.isVisible = it },
+                loading = { if (it) display(loading = true) },
                 success = ::handleSuccess
             )
         }
@@ -86,8 +86,14 @@ class HomeFragment : Fragment() {
         display(error = true)
     }
 
-    private fun display(content: Boolean = false, error: Boolean = false, empty: Boolean = false) {
+    private fun display(
+        content: Boolean = false,
+        loading: Boolean = false,
+        error: Boolean = false,
+        empty: Boolean = false
+    ) {
         binding.rvTracks.isVisible = content
+        binding.loading.shimmer.isVisible = loading
         binding.error.root.isVisible = error
         binding.empty.root.isVisible = empty
     }

@@ -19,6 +19,7 @@
 
     <dimen name="little_radius">4dp</dimen>
     <dimen name="medium_radius">12dp</dimen>
+    <dimen name="big_radius">50dp</dimen>
 
     <dimen name="small_button_height">30dp</dimen>
 
