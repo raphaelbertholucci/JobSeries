@@ -1,4 +1,4 @@
-package com.bertholucci.home.details
+package com.bertholucci.home.ui.show
 
 import android.view.LayoutInflater
 import android.view.View

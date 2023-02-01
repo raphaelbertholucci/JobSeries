@@ -5,11 +5,11 @@ import com.bertholucci.data.mapper.EpisodeMapper
 import com.bertholucci.data.mapper.ShowMapper
 import com.bertholucci.domain.model.Episode
 import com.bertholucci.domain.model.Show
-import com.bertholucci.domain.repository.HomeRepository
+import com.bertholucci.domain.repository.ShowRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class HomeRepositoryImpl(private val api: JobSeriesApi) : HomeRepository {
+class ShowRepositoryImpl(private val api: JobSeriesApi) : ShowRepository {
 
     override fun getShows(page: Int): Flow<List<Show>> {
         return flow {

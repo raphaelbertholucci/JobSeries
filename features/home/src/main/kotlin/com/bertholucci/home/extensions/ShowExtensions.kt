@@ -2,7 +2,7 @@ package com.bertholucci.home.extensions
 
 import com.bertholucci.domain.model.Schedule
 import com.bertholucci.domain.model.Show
-import com.bertholucci.home.ShowStatus
+import com.bertholucci.home.model.ShowStatus
 
 fun Show.getAirDate(): String {
     if (premiered.none()) return ""

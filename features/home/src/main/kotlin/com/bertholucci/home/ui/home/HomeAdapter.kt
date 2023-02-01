@@ -1,4 +1,4 @@
-package com.bertholucci.home.home
+package com.bertholucci.home.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,6 @@ import com.bertholucci.home.databinding.ItemHomeBinding
 import com.bertholucci.home.extensions.getAirDate
 import com.bertholucci.home.extensions.ifNotEmpty
 import com.bertholucci.home.extensions.loadFromUrl
-import kotlin.coroutines.coroutineContext
 
 class HomeAdapter(
     private val shows: List<Show>,

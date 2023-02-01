@@ -2,10 +2,10 @@ package com.bertholucci.domain.interactor
 
 import com.bertholucci.domain.UseCase
 import com.bertholucci.domain.model.Show
-import com.bertholucci.domain.repository.HomeRepository
+import com.bertholucci.domain.repository.ShowRepository
 import kotlinx.coroutines.flow.Flow
 
-class GetShows(private val repository: HomeRepository) :
+class GetShows(private val repository: ShowRepository) :
     UseCase<Int, List<Show>>() {
 
     override fun executeUseCase(requestValues: Int): Flow<List<Show>> {

@@ -1,4 +1,4 @@
-package com.bertholucci.home.home
+package com.bertholucci.home.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,16 +8,8 @@ import com.bertholucci.domain.helper.JobSeriesResponse
 import com.bertholucci.domain.interactor.GetShows
 import com.bertholucci.domain.interactor.GetShowsByQuery
 import com.bertholucci.domain.model.Show
-import com.bertholucci.home.extensions.failure
-import com.bertholucci.home.extensions.hideLoading
-import com.bertholucci.home.extensions.showLoading
-import com.bertholucci.home.extensions.success
+import com.bertholucci.home.extensions.response
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
 
 class HomeViewModel(
     private val getShowsUseCase: GetShows,
@@ -41,10 +33,6 @@ class HomeViewModel(
     }
 
     private fun Flow<List<Show>>.observe() {
-        this.onStart { _shows.showLoading() }
-            .onCompletion { _shows.hideLoading() }
-            .map { _shows.success(it) }
-            .catch { _shows.failure(it) }
-            .launchIn(viewModelScope)
+        this.response(_shows, viewModelScope)
     }
 }

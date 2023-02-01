@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import java.util.concurrent.*
 
-const val CONN_TIMEOUT_SEC = 60L
+const val CONN_TIMEOUT_SEC = 5L
 
 val apiModule = module {
     single {

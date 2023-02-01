@@ -1,7 +1,7 @@
 import com.bertholucci.domain.interactor.GetShows
 import com.bertholucci.domain.model.Show
 import com.bertholucci.domain.model.WeatherResultsDomain
-import com.bertholucci.domain.repository.HomeRepository
+import com.bertholucci.domain.repository.ShowRepository
 import helpers.BaseTest
 import io.mockk.coEvery
 import io.mockk.impl.annotations.RelaxedMockK
@@ -15,7 +15,7 @@ import org.junit.Test
 class GetShowsTest : BaseTest<GetShows>() {
 
     @RelaxedMockK
-    private lateinit var repository: HomeRepository
+    private lateinit var repository: ShowRepository
 
     override fun init() {
         agent = GetShows(repository)

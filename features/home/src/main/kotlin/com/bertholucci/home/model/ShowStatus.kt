@@ -1,4 +1,4 @@
-package com.bertholucci.home
+package com.bertholucci.home.model
 
 enum class ShowStatus(val value: String) {
     RUNNING("Running"),

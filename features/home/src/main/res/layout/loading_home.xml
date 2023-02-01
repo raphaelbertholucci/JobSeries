@@ -10,33 +10,33 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
-        <include layout="@layout/loading_home_item" />
+        <include layout="@layout/loading_item_home" />
 
     </LinearLayout>
 

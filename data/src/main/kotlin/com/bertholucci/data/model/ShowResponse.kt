@@ -41,8 +41,8 @@ class EpisodeResponse(
     @SerializedName("number") val number: Int?,
     @SerializedName("season") val season: Int?,
     @SerializedName("runtime") val runtime: String?,
-    @SerializedName("airDate") val airDate: String?,
-    @SerializedName("airTime") val airTime: String?,
+    @SerializedName("airdate") val airDate: String?,
+    @SerializedName("airtime") val airTime: String?,
     @SerializedName("rating") val rating: RatingResponse?,
     @SerializedName("summary") val summary: String?,
     @SerializedName("image") val image: ImageResponse?

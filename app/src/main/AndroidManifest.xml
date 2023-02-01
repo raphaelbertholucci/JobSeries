@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting">
         <activity
-            android:name="com.bertholucci.home.home.HomeActivity"
+            android:name="com.bertholucci.home.ui.home.HomeActivity"
             android:theme="@style/Theme.App"
             android:exported="true">
             <intent-filter>

@@ -1,4 +1,4 @@
-package com.bertholucci.home.details
+package com.bertholucci.home.ui.show
 
 import android.os.Bundle
 import android.text.Html
@@ -18,6 +18,7 @@ import com.bertholucci.home.extensions.getSchedule
 import com.bertholucci.home.extensions.gone
 import com.bertholucci.home.extensions.loadFromUrl
 import com.bertholucci.home.extensions.navProvider
+import com.bertholucci.home.extensions.navigateWithAnimation
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -28,7 +29,7 @@ class ShowDetailsFragment : Fragment() {
 
     private val navController by navProvider()
     private val args: ShowDetailsFragmentArgs by navArgs()
-    private val viewModel: ShowDetailsViewModel by viewModel {
+    private val viewModel: ShowViewModel by viewModel {
         parametersOf(args.id)
     }
 
@@ -123,7 +124,9 @@ class ShowDetailsFragment : Fragment() {
         binding.rvEpisodes.adapter = EpisodesAdapter(
             episodes = show.episodes,
             onClick = {
-                ShowDetailsFragmentDirections.toEpisodeDetails(it.id)
+                navController.navigateWithAnimation(
+                    ShowDetailsFragmentDirections.toEpisodeDetails(it.id)
+                )
             }
         )
     }

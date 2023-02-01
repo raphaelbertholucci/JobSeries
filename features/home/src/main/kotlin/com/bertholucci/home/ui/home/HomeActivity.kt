@@ -1,4 +1,4 @@
-package com.bertholucci.home.home
+package com.bertholucci.home.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

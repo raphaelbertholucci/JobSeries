@@ -232,11 +232,11 @@
             android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="iv_save, cv_poster, tv_name, tv_rate, tv_runtime, tv_language, tv_release_date, rv_genre, tv_schedule_label, tv_schedule, tv_summary_label, tv_summary, tv_episodes_label, rv_episodes, iv_background, shadow" />
+            app:constraint_referenced_ids="iv_save, cv_poster, tv_name, tv_rate, tv_runtime, tv_language, tv_release_date, rv_genre, tv_schedule_label, tv_schedule, tv_summary_label, tv_summary, tv_episodes_label, rv_episodes" />
 
         <include
             android:id="@+id/loading"
-            layout="@layout/fragment_show_details_placeholder"
+            layout="@layout/loading_show"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -246,7 +246,7 @@
 
         <include
             android:id="@+id/error"
-            layout="@layout/error_show_details"
+            layout="@layout/error_details"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

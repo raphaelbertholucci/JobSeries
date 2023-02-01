@@ -1,7 +1,7 @@
 package com.bertholucci.data
 
 import com.bertholucci.data.model.ShowResponse
-import com.bertholucci.data.repository.HomeRepositoryImpl
+import com.bertholucci.data.repository.ShowRepositoryImpl
 import io.mockk.coEvery
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -10,13 +10,13 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class HomeRepositoryImplTest : BaseTest<HomeRepositoryImpl>() {
+class HomeRepositoryImplTest : BaseTest<ShowRepositoryImpl>() {
 
     @RelaxedMockK
     private lateinit var api: JobSeriesApi
 
     override fun init() {
-        agent = HomeRepositoryImpl(api)
+        agent = ShowRepositoryImpl(api)
     }
 
     @Test

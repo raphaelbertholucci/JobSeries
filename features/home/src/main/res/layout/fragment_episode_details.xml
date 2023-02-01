@@ -1,6 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_episode"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/show_img_background_height"
+            android:alpha="0.5"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_background"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/shadow"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/show_shadow_height"
+            android:background="@drawable/bg_gradient_shadow"
+            app:layout_constraintBottom_toBottomOf="@id/iv_episode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/medium_margin"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/Body.Bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/default_margin"
+            android:layout_marginTop="@dimen/big_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_episode"
+            tools:text="Avengers: Endgame" />
+
+        <TextView
+            android:id="@+id/tv_season"
+            style="@style/Caption.Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/little_margin"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="Season 01 | Episode 01" />
+
+        <TextView
+            android:id="@+id/tv_rate"
+            style="@style/Caption.Highlight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:drawablePadding="@dimen/little_margin"
+            app:drawableStartCompat="@drawable/ic_star"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_season"
+            tools:text="9.9" />
+
+        <TextView
+            android:id="@+id/tv_runtime"
+            style="@style/Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:background="@drawable/bg_button_rounded_black"
+            android:paddingHorizontal="@dimen/little_margin"
+            android:paddingVertical="@dimen/tiny_margin"
+            app:layout_constraintBottom_toBottomOf="@id/tv_rate"
+            app:layout_constraintStart_toEndOf="@id/tv_rate"
+            app:layout_constraintTop_toTopOf="@id/tv_rate"
+            tools:text="120 min" />
+
+        <TextView
+            android:id="@+id/tv_release_date"
+            style="@style/Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            app:layout_constraintStart_toEndOf="@id/tv_runtime"
+            app:layout_constraintTop_toTopOf="@id/tv_rate"
+            tools:text="12 Dec 2020" />
+
+        <TextView
+            android:id="@+id/tv_summary_label"
+            style="@style/Body.Bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_margin"
+            android:text="@string/show_summary"
+            app:layout_constraintEnd_toEndOf="@id/tv_name"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_release_date" />
+
+        <TextView
+            android:id="@+id/tv_summary"
+            style="@style/Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/little_margin"
+            app:layout_constraintEnd_toEndOf="@id/tv_summary_label"
+            app:layout_constraintStart_toStartOf="@id/tv_summary_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_summary_label"
+            tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="iv_episode, shadow, tv_name, tv_season, tv_rate, tv_runtime, tv_release_date, tv_summary_label, tv_summary" />
+
+        <include
+            android:id="@+id/error"
+            layout="@layout/error_details"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include
+            android:id="@+id/loading"
+            layout="@layout/loading_episode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

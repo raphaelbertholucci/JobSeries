@@ -1,4 +1,4 @@
-package com.bertholucci.home.home
+package com.bertholucci.home.ui.home
 
 import android.os.Bundle
 import android.util.Log
@@ -72,9 +72,7 @@ class HomeFragment : Fragment() {
                     shows = list,
                     onClick = { show ->
                         navController.navigateWithAnimation(
-                            HomeFragmentDirections.toShowDetails(
-                                show.id
-                            )
+                            HomeFragmentDirections.toShowDetails(show.id)
                         )
                     })
             }
