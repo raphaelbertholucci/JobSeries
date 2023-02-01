@@ -5,6 +5,8 @@ import com.bertholucci.domain.model.Show
 import com.bertholucci.home.ShowStatus
 
 fun Show.getAirDate(): String {
+    if (premiered.none()) return ""
+
     var year = premiered.getYear()
 
     if (status == ShowStatus.ENDED.value) {

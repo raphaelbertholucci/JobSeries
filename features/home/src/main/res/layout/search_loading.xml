@@ -3,13 +3,12 @@
     android:id="@+id/shimmer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="gone">
+    android:visibility="visible">
 
-    <GridLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="3"
-        android:useDefaultMargins="true">
+        android:orientation="vertical">
 
         <include layout="@layout/search_loading_placeholder_item" />
 
@@ -39,6 +38,6 @@
 
         <include layout="@layout/search_loading_placeholder_item" />
 
-    </GridLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </com.facebook.shimmer.ShimmerFrameLayout>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.bertholucci.domain.helper.fold
@@ -33,17 +34,32 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addObservers()
-
-        viewModel.getShows()
+        addListeners()
     }
 
     private fun addObservers() {
         viewModel.shows.observe(viewLifecycleOwner) { response ->
+            binding.swipe.isRefreshing = false
             response.fold(
                 error = ::handleError,
                 loading = { binding.loading.shimmer.isVisible = it },
                 success = ::handleSuccess
             )
+        }
+    }
+
+    private fun addListeners() {
+        binding.swipe.setOnRefreshListener {
+            viewModel.getShows()
+        }
+
+        binding.etSearch.addTextChangedListener {
+            it?.let { text ->
+                when {
+                    text.toString().isEmpty() -> viewModel.getShows()
+                    else -> viewModel.getShowsByQuery(query = text.toString())
+                }
+            }
         }
     }
 

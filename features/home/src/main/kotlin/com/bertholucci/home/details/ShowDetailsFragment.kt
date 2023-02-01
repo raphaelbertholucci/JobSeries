@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bertholucci.domain.helper.fold
 import com.bertholucci.domain.model.Schedule
 import com.bertholucci.domain.model.Show

@@ -31,12 +31,11 @@
         style="@style/Body"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginHorizontal="@dimen/default_margin"
         app:layout_constraintBottom_toTopOf="@id/tv_year"
         app:layout_constraintEnd_toStartOf="@id/tv_rate"
         app:layout_constraintStart_toEndOf="@id/cv_poster"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cv_poster"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="Avengers" />
 
@@ -60,7 +59,7 @@
         android:background="@drawable/bg_white_stroke"
         android:paddingHorizontal="@dimen/little_margin"
         android:paddingVertical="@dimen/tiny_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/cv_poster"
         app:layout_constraintStart_toStartOf="@id/tv_title"
         app:layout_constraintTop_toBottomOf="@id/tv_year"
         tools:text="60m" />
@@ -72,9 +71,9 @@
         android:layout_height="wrap_content"
         android:drawablePadding="@dimen/little_margin"
         app:drawableStartCompat="@drawable/ic_star"
-        app:layout_constraintBottom_toBottomOf="@id/tv_year"
+        app:layout_constraintBottom_toBottomOf="@id/cv_poster"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_year"
+        app:layout_constraintTop_toTopOf="@id/cv_poster"
         tools:text="9.9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

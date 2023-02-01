@@ -17,6 +17,14 @@ class HomeRepositoryImpl(private val api: JobSeriesApi) : HomeRepository {
         }
     }
 
+    override fun getShowsByQuery(query: String): Flow<List<Show>> {
+        return flow {
+            emit(api.getShowsByQuery(query).map {
+                ShowMapper.mapToDomain(it.show)
+            })
+        }
+    }
+
     override fun getShowById(id: Int): Flow<Show> {
         return flow {
             emit(

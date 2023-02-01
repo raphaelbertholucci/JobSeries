@@ -13,8 +13,7 @@ import com.bertholucci.home.extensions.loadFromUrl
 class EpisodesAdapter(
     private val episodes: List<Episode>,
     private val onClick: (Episode) -> Unit
-) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val viewTypeItem = 0
     private val viewTypeHeader = 1

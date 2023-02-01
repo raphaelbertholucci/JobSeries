@@ -8,7 +8,7 @@
     <dimen name="medium_margin">20dp</dimen>
     <dimen name="medium_extra_margin">24dp</dimen>
     <dimen name="big_margin">32dp</dimen>
-    <dimen name="large_margin">48dp</dimen>
+    <dimen name="large_margin">64dp</dimen>
 
     <!--    FONT SIZE-->
     <dimen name="extra_small_text">12sp</dimen>
