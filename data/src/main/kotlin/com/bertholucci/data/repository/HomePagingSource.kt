@@ -8,7 +8,7 @@ import com.bertholucci.domain.model.Show
 
 private const val STARTING_PAGE_INDEX = 0
 
-class HomePagingSource(private val api: JobSeriesApi): PagingSource<Int, Show>() {
+class HomePagingSource(private val api: JobSeriesApi) : PagingSource<Int, Show>() {
 
     override fun getRefreshKey(state: PagingState<Int, Show>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -22,8 +22,9 @@ class HomePagingSource(private val api: JobSeriesApi): PagingSource<Int, Show>()
             val nextPage = params.key ?: STARTING_PAGE_INDEX
             val response = api.getShows(nextPage)
             val nextKey = if (response.isEmpty()) null else nextPage + 1
+            val list = ShowMapper.mapToDomainList(response)
             LoadResult.Page(
-                data = ShowMapper.mapToDomainList(response),
+                data = list,
                 nextKey = nextKey,
                 prevKey = null
             )

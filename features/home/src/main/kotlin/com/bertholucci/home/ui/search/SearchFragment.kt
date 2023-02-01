@@ -46,7 +46,7 @@ class SearchFragment : Fragment() {
                     SearchFragmentDirections.toShowDetails(show.id)
                 )
             })
-        binding.rvTracks.adapter = adapter
+        binding.rvShows.adapter = adapter
     }
 
     private fun addListeners() {
@@ -100,7 +100,7 @@ class SearchFragment : Fragment() {
         error: Boolean = false,
         empty: Boolean = false
     ) {
-        binding.rvTracks.isVisible = content
+        binding.rvShows.isVisible = content
         binding.loading.shimmer.isVisible = loading
         binding.error.root.isVisible = error
         binding.empty.root.isVisible = empty

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -33,6 +34,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addListeners()
+        setupUI()
         getShows()
     }
 
@@ -51,18 +53,26 @@ class HomeFragment : Fragment() {
     }
 
     private fun getShows() {
-        adapter = HomeAdapter(
-            onClick = { show ->
-                navController.navigateWithAnimation(
-                    HomeFragmentDirections.toShowDetails(show.id)
-                )
-            })
-        binding.rvTracks.adapter = adapter
         lifecycleScope.launch {
             viewModel.shows.collectLatest {
                 adapter.submitData(it)
                 binding.swipe.isRefreshing = false
             }
+        }
+    }
+
+    private fun setupUI() {
+        adapter = HomeAdapter(
+            onClick = { show ->
+                navController.navigateWithAnimation(
+                    HomeFragmentDirections.toShowDetails(show.id)
+                )
+            }
+        ).apply {
+            addLoadStateListener {
+                binding.tvLoaded.isVisible = adapter.itemCount == 0
+            }
+            binding.rvShows.adapter = this
         }
     }
 }
