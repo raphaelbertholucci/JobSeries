@@ -11,12 +11,6 @@ import kotlinx.coroutines.flow.flow
 
 class ShowRepositoryImpl(private val api: JobSeriesApi) : ShowRepository {
 
-    override fun getShows(page: Int): Flow<List<Show>> {
-        return flow {
-            emit(ShowMapper.mapToDomainList(responseList = api.getShows(page = page)))
-        }
-    }
-
     override fun getShowsByQuery(query: String): Flow<List<Show>> {
         return flow {
             emit(api.getShowsByQuery(query).map {

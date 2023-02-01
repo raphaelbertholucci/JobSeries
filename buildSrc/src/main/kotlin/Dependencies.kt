@@ -22,6 +22,8 @@ object SupportDependencies {
     val splash by lazy { "androidx.core:core-splashscreen:${SupportVersions.splash_version}" }
     val swipe_refresh by lazy { "androidx.swiperefreshlayout:swiperefreshlayout:${SupportVersions.swipe_refresh_layout_version}" }
     val flexbox by lazy { "com.google.android.flexbox:flexbox:${SupportVersions.flexbox_version}" }
+    val paging by lazy { "androidx.paging:paging-runtime:${SupportVersions.paging_version}" }
+    val paging_common by lazy { "androidx.paging:paging-common:${SupportVersions.paging_version}" }
 }
 
 object NetworkDependencies {

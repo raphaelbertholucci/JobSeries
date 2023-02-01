@@ -5,6 +5,7 @@
     <string name="search_shows_loaded">Shows loaded!</string>
     <string name="search_empty">Sorry!\nWe didn\'t found any results!</string>
     <string name="search_popularity">Popularity</string>
+    <string name="search_hint">Type at least 1 letter to begin the search</string>
     <string name="search_sort_popularity_by">Sort popularity by:</string>
     <string name="search_crescent">Crescent</string>
     <string name="search_descending">Descending</string>

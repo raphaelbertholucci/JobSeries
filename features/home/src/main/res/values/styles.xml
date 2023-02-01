@@ -14,7 +14,7 @@
     </style>
 
     <style name="Header">
-        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:textColor">@color/color_white</item>
         <item name="android:textSize">@dimen/big_text</item>
     </style>

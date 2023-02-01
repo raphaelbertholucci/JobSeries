@@ -3,22 +3,12 @@ package com.bertholucci.home.extensions
 import androidx.lifecycle.MutableLiveData
 import com.bertholucci.domain.helper.JobSeriesResponse
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
-
-fun <T : Any> MutableLiveData<T>.defaultValue(defaultValue: T, async: Boolean = false) =
-    apply {
-        if (value == null) {
-            if (async) postValue(defaultValue)
-        } else {
-            value = defaultValue
-        }
-    }
 
 fun <V> MutableLiveData<JobSeriesResponse<V>>.showLoading() {
     value = JobSeriesResponse.Loading(true)

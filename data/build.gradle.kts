@@ -28,6 +28,7 @@ dependencies {
     implementation(NetworkDependencies.okhttp)
     implementation(NetworkDependencies.gson)
     implementation(NetworkDependencies.gson_converter)
+    implementation(SupportDependencies.paging)
 
     implementation(DependencyInjectionDependencies.koin)
     implementation(DependencyInjectionDependencies.koin_core)

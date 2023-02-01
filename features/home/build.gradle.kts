@@ -35,6 +35,7 @@ dependencies {
     implementation(SupportDependencies.splash)
     implementation(SupportDependencies.swipe_refresh)
     implementation(SupportDependencies.flexbox)
+    implementation(SupportDependencies.paging)
 
     implementation(DependencyInjectionDependencies.koin)
     implementation(DependencyInjectionDependencies.koin_core)

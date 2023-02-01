@@ -127,7 +127,7 @@
 
         <include
             android:id="@+id/error"
-            layout="@layout/error_details"
+            layout="@layout/error_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

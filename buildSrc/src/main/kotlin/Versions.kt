@@ -16,8 +16,9 @@ object SupportVersions {
     const val coil_version = "1.4.0"
     const val shimmer_version = "0.5.0"
     const val swipe_refresh_layout_version = "1.1.0"
-    const val splash_version = "1.0.0-alpha02"
+    const val splash_version = "1.0.0"
     const val flexbox_version = "3.0.0"
+    const val paging_version = "3.1.1"
 }
 
 object NetworkVersions {

@@ -12,6 +12,18 @@
         <action
             android:id="@+id/to_show_details"
             app:destination="@id/fragment_show_details" />
+        <action
+            android:id="@+id/to_search"
+            app:destination="@id/fragment_search" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_search"
+        android:name="com.bertholucci.home.ui.search.SearchFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/to_show_details"
+            app:destination="@id/fragment_show_details" />
     </fragment>
 
     <fragment

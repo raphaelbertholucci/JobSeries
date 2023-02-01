@@ -1,11 +1,10 @@
-package com.bertholucci.home.ui.home
+package com.bertholucci.home.ui.search
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.isGone
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bertholucci.domain.model.Show
@@ -15,9 +14,17 @@ import com.bertholucci.home.extensions.getAirDate
 import com.bertholucci.home.extensions.ifNotEmpty
 import com.bertholucci.home.extensions.loadFromUrl
 
-class HomeAdapter(
+class SearchAdapter(
+    private val shows: MutableList<Show> = mutableListOf(),
     private val onClick: (Show) -> Unit
-) : PagingDataAdapter<Show, HomeAdapter.HomeViewHolder>(ShowComparator) {
+) : RecyclerView.Adapter<SearchAdapter.HomeViewHolder>() {
+
+    fun setList(updatedUserList: List<Show>) {
+        val diffResult = DiffUtil.calculateDiff(SearchDiffUtilCallback(shows, updatedUserList))
+        shows.clear()
+        shows.addAll(updatedUserList)
+        diffResult.dispatchUpdatesTo(this)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         return HomeViewHolder(
@@ -26,8 +33,10 @@ class HomeAdapter(
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        getItem(position)?.let { holder.bind(it) }
+        holder.bind(shows[position])
     }
+
+    override fun getItemCount() = shows.size
 
     inner class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -53,13 +62,5 @@ class HomeAdapter(
             textView.isGone = text.none()
             textView.text = text
         }
-    }
-
-    object ShowComparator : DiffUtil.ItemCallback<Show>() {
-        override fun areItemsTheSame(oldItem: Show, newItem: Show) =
-            oldItem.id == newItem.id
-
-        override fun areContentsTheSame(oldItem: Show, newItem: Show) =
-            oldItem == newItem
     }
 }
