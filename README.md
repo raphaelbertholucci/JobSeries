@@ -41,7 +41,7 @@ Coroutines are light, they prevent some memory leaks and they have integration w
 Flow also had some advantages, like multiplatform support, nullability support, suspending execution and they also prevent some memory leaks, on account of being collected in the ViewModel scope.
 
 ### <b>Junit</b> with <b>MockK</b> for unit tests :writing_hand:
-To guarantee code quality, tests were implemented using JUnit with MockK for unit tests.
+To guarantee code quality, tests were implemented using JUnit with MockK for unit tests. There is an example in GetShowsByIdTest.kt and ShowRepositoryImplTest.kt.
 
 <p align="center">
 <img src="https://github.com/raphaelbertholucci/JobSeries/blob/main/readme-pictures/search_empty.webp" alt="" data-canonical-src="https://github.com/raphaelbertholucci/JobSeries/blob/main/readme-pictures/search_empty.webp" width="250" height="480" />
