@@ -22,7 +22,7 @@ interface JobSeriesApi {
     @GET("shows/{id}")
     suspend fun getShowById(
         @Path("id") id: Int,
-        @Query("embed") embed: String
+        @Query("embed") embed: String = "episodes"
     ): ShowResponse
 
     @GET("episodes/{id}")

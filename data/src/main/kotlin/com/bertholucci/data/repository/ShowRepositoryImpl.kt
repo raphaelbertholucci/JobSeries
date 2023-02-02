@@ -21,14 +21,7 @@ class ShowRepositoryImpl(private val api: JobSeriesApi) : ShowRepository {
 
     override fun getShowById(id: Int): Flow<Show> {
         return flow {
-            emit(
-                ShowMapper.mapToDomain(
-                    api.getShowById(
-                        id = id,
-                        embed = "episodes"
-                    )
-                )
-            )
+            emit(ShowMapper.mapToDomain(api.getShowById(id = id)))
         }
     }
 
