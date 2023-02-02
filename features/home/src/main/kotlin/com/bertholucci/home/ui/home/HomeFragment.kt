@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.paging.LoadState
 import com.bertholucci.home.databinding.FragmentHomeBinding
 import com.bertholucci.home.extensions.navProvider
 import com.bertholucci.home.extensions.navigateWithAnimation
@@ -34,7 +35,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addListeners()
-        setupUI()
+        setupAdapter()
         getShows()
     }
 
@@ -61,12 +62,11 @@ class HomeFragment : Fragment() {
             viewModel.shows.collectLatest {
                 adapter.submitData(it)
                 binding.swipe.isRefreshing = false
-                binding.tvLoaded.isVisible = adapter.itemCount == 0
             }
         }
     }
 
-    private fun setupUI() {
+    private fun setupAdapter() {
         adapter = HomeAdapter(
             onClick = { show ->
                 navController.navigateWithAnimation(
@@ -74,6 +74,25 @@ class HomeFragment : Fragment() {
                 )
             }
         )
+
+        adapter.addLoadStateListener {
+            when (it.refresh) {
+                is LoadState.Loading -> display(loading = true)
+                is LoadState.Error -> display(error = true)
+                else -> display(content = true)
+            }
+        }
         binding.rvShows.adapter = adapter
+    }
+
+    private fun display(
+        content: Boolean = false,
+        loading: Boolean = false,
+        error: Boolean = false
+    ) {
+        binding.rvShows.isVisible = content
+        binding.loading.shimmer.isVisible = loading
+        binding.error.root.isVisible = error
+        binding.tvLoaded.isVisible = adapter.itemCount == 0 && content
     }
 }
