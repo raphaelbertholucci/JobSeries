@@ -30,10 +30,10 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class ShowDetailsFragment : Fragment() {
+class ShowFragment : Fragment() {
 
     private val navController by navProvider()
-    private val args: ShowDetailsFragmentArgs by navArgs()
+    private val args: ShowFragmentArgs by navArgs()
 
     private val viewModel: ShowViewModel by viewModel {
         parametersOf(args.id, args.fromFavorites)
@@ -138,7 +138,7 @@ class ShowDetailsFragment : Fragment() {
             episodes = show.episodes,
             onClick = {
                 navController.navigateWithAnimation(
-                    ShowDetailsFragmentDirections.toEpisodeDetails(it.id)
+                    ShowFragmentDirections.toEpisodeDetails(it.id, viewModel.isFromFavorites)
                 )
             }
         )

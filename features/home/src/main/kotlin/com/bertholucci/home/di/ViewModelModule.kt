@@ -17,14 +17,18 @@ val viewModelModule = module {
             fromFavorites = fromFavorites,
             useCase = get(),
             insertShowIntoDB = get(),
+            insertEpisodeIntoDB = get(),
             removeShowIntoDB = get(),
+            removeEpisodeFromDB = get(),
             getShowByIdFromDB = get()
         )
     }
-    viewModel { (episodeId: Int) ->
+    viewModel { (episodeId: Int, fromFavorites: Boolean) ->
         EpisodeViewModel(
             episodeId = episodeId,
-            getEpisodeById = get()
+            fromFavorites = fromFavorites,
+            getEpisodeById = get(),
+            getEpisodeByIdFromDB = get()
         )
     }
     viewModel { FavoritesViewModel(getShowsFromDB = get()) }

@@ -13,6 +13,9 @@ interface ShowRepository {
 
     fun getShowsFromDB(): Flow<List<Show>>
     fun insertShow(show: Show): Flow<Unit>
+    fun insertEpisode(episode: Episode): Flow<Unit>
     fun removeShow(show: Show): Flow<Unit>
+    fun removeEpisode(episode: Episode): Flow<Unit>
     fun getShowByIdFromDB(id: Int): Flow<Show>
+    fun getEpisodeByIdFromDB(id: Int): Flow<Episode>
 }

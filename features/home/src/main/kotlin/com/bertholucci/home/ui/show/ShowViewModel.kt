@@ -7,9 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.bertholucci.domain.helper.JobSeriesResponse
 import com.bertholucci.domain.interactor.GetShowById
 import com.bertholucci.domain.interactor.GetShowByIdFromDB
+import com.bertholucci.domain.interactor.InsertEpisodeIntoDB
 import com.bertholucci.domain.interactor.InsertShowIntoDB
+import com.bertholucci.domain.interactor.RemoveEpisodeFromDB
 import com.bertholucci.domain.interactor.RemoveShowIntoDB
 import com.bertholucci.domain.model.Show
+import com.bertholucci.home.extensions.episodesListFiltered
 import com.bertholucci.home.extensions.failure
 import com.bertholucci.home.extensions.hideLoading
 import com.bertholucci.home.extensions.showLoading
@@ -25,12 +28,14 @@ class ShowViewModel(
     fromFavorites: Boolean,
     private val useCase: GetShowById,
     private val insertShowIntoDB: InsertShowIntoDB,
+    private val insertEpisodeIntoDB: InsertEpisodeIntoDB,
     private val removeShowIntoDB: RemoveShowIntoDB,
+    private val removeEpisodeFromDB: RemoveEpisodeFromDB,
     private val getShowByIdFromDB: GetShowByIdFromDB
 ) : ViewModel() {
 
     private val id = showId
-    private val isFromFavorites = fromFavorites
+    val isFromFavorites = fromFavorites
 
     val isFavorite = MutableLiveData<Boolean>()
     val hasChanged = MutableLiveData(false)
@@ -53,8 +58,13 @@ class ShowViewModel(
 
     fun updateShowState() {
         show.value?.let { show ->
-            if (isFavorite.value == true) removeShow(show)
-            else insertShow(show)
+            if (isFavorite.value == true) {
+                removeShow(show)
+                removeEpisodesFromDB(show)
+            } else {
+                insertShow(show)
+                insertEpisodesIntoDB(show)
+            }
             hasChanged.postValue(true)
         }
     }
@@ -93,6 +103,14 @@ class ShowViewModel(
                 if (isFromFavorites) _showResponse.failure(it)
                 isFavorite.postValue(false)
             }.launchIn(viewModelScope)
+    }
+
+    private fun insertEpisodesIntoDB(show: Show) {
+        show.episodesListFiltered().forEach { insertEpisodeIntoDB(it).launchIn(viewModelScope) }
+    }
+
+    private fun removeEpisodesFromDB(show: Show) {
+        show.episodesListFiltered().forEach { removeEpisodeFromDB(it).launchIn(viewModelScope) }
     }
 
     fun updateShow(s: Show) {

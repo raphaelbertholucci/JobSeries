@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/fragment_show_details"
-        android:name="com.bertholucci.home.ui.show.ShowDetailsFragment"
+        android:name="com.bertholucci.home.ui.show.ShowFragment"
         tools:layout="@layout/fragment_show_details">
         <action
             android:id="@+id/to_episode_details"
@@ -56,11 +56,14 @@
 
     <fragment
         android:id="@+id/fragment_episode_details"
-        android:name="com.bertholucci.home.ui.episode.EpisodeDetailsFragment"
+        android:name="com.bertholucci.home.ui.episode.EpisodeFragment"
         tools:layout="@layout/fragment_episode_details">
         <argument
             android:name="id"
             app:argType="integer" />
+        <argument
+            android:name="fromFavorites"
+            app:argType="boolean" />
     </fragment>
 
 </navigation>

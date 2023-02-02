@@ -18,11 +18,11 @@ import com.bertholucci.home.extensions.loadFromUrl
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class EpisodeDetailsFragment : Fragment() {
+class EpisodeFragment : Fragment() {
 
-    private val args: EpisodeDetailsFragmentArgs by navArgs()
+    private val args: EpisodeFragmentArgs by navArgs()
     private val viewModel: EpisodeViewModel by viewModel {
-        parametersOf(args.id)
+        parametersOf(args.id, args.fromFavorites)
     }
 
     private val binding by lazy {

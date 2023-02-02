@@ -1,10 +1,15 @@
 package com.bertholucci.data.mapper.entity
 
+import com.bertholucci.data.extensions.fromJson
 import com.bertholucci.data.mapper.BaseMapper
 import com.bertholucci.data.model.EpisodeEntity
 import com.bertholucci.domain.model.Episode
+import com.google.gson.Gson
 
 object EpisodeEntityMapper : BaseMapper<EpisodeEntity, Episode> {
+
+    val gson = Gson()
+
     override fun mapFromDomain(domain: Episode): EpisodeEntity {
         return EpisodeEntity(
             id = domain.id,
@@ -14,9 +19,9 @@ object EpisodeEntityMapper : BaseMapper<EpisodeEntity, Episode> {
             runtime = domain.runtime,
             airDate = domain.airDate,
             airTime = domain.airTime,
-            rating = RatingEntityMapper.mapFromDomain(domain.rating),
+            rating = gson.toJson(RatingEntityMapper.mapFromDomain(domain.rating)),
             summary = domain.summary,
-            image = ImageEntityMapper.mapFromDomain(domain.image)
+            image = gson.toJson(ImageEntityMapper.mapFromDomain(domain.image))
         )
     }
 
@@ -29,9 +34,9 @@ object EpisodeEntityMapper : BaseMapper<EpisodeEntity, Episode> {
             runtime = response.runtime,
             airDate = response.airDate,
             airTime = response.airTime,
-            rating = RatingEntityMapper.mapToDomain(response.rating),
+            rating = RatingEntityMapper.mapToDomain(gson.fromJson(response.rating)),
             summary = response.summary,
-            image = ImageEntityMapper.mapToDomain(response.image)
+            image = ImageEntityMapper.mapToDomain(gson.fromJson(response.image))
         )
     }
 

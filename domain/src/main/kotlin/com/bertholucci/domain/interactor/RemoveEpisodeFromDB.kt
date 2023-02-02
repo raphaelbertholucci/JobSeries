@@ -1,0 +1,15 @@
+package com.bertholucci.domain.interactor
+
+import com.bertholucci.domain.UseCase
+import com.bertholucci.domain.model.Episode
+import com.bertholucci.domain.model.Show
+import com.bertholucci.domain.repository.ShowRepository
+import kotlinx.coroutines.flow.Flow
+
+class RemoveEpisodeFromDB(private val repository: ShowRepository) :
+    UseCase<Episode, Unit>() {
+
+    override fun executeUseCase(requestValues: Episode): Flow<Unit> {
+        return repository.removeEpisode(requestValues)
+    }
+}
