@@ -11,9 +11,11 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.NavController
 import com.bertholucci.domain.helper.fold
 import com.bertholucci.domain.model.Show
+import com.bertholucci.home.R
 import com.bertholucci.home.databinding.FragmentFavoritesBinding
 import com.bertholucci.home.extensions.navProvider
 import com.bertholucci.home.extensions.navigateWithAnimation
+import com.bertholucci.home.extensions.showSortAlert
 import com.bertholucci.home.ui.ShowsAdapter
 import com.bertholucci.home.ui.search.SearchFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -63,6 +65,12 @@ class FavoritesFragment : Fragment() {
 
         binding.ivBack.setOnClickListener {
             activity?.onBackPressed()
+        }
+
+        binding.ivSort.setOnClickListener {
+            context?.run {
+                showSortAlert(R.array.sort_shows) { which -> viewModel.getShows(which) }
+            }
         }
 
         setFragmentResultListener(REQUEST_KEY_FAVORITES) { _, bundle ->

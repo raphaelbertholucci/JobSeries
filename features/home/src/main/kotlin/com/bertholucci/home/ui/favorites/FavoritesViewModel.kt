@@ -8,6 +8,7 @@ import com.bertholucci.domain.helper.JobSeriesResponse
 import com.bertholucci.domain.interactor.GetShowsFromDB
 import com.bertholucci.domain.model.Show
 import com.bertholucci.home.extensions.failure
+import com.bertholucci.home.extensions.sort
 import com.bertholucci.home.extensions.success
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
@@ -25,10 +26,10 @@ class FavoritesViewModel(
         getShows()
     }
 
-    fun getShows() {
+    fun getShows(sortAlphabetical: Int = 0) {
         getShowsFromDB(Unit)
-            .map { _shows.success(it) }
-            .catch { _shows.failure(it) }
+            .map { shows -> _shows.success(shows.sort(sortAlphabetical)) }
+            .catch { throwable -> _shows.failure(throwable) }
             .launchIn(viewModelScope)
     }
 }

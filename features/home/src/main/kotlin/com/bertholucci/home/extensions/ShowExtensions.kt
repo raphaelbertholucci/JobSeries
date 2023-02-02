@@ -20,3 +20,11 @@ fun Schedule.getSchedule(): String {
 }
 
 fun Show.episodesListFiltered() = episodes.filter { it.id != 0 }
+
+fun List<Show>.sort(sort: Int = 0): List<Show> {
+    return when (sort) {
+        1 -> this.sortedBy { show -> show.name }
+        2 -> this.sortedByDescending { show -> show.name }
+        else -> this
+    }
+}

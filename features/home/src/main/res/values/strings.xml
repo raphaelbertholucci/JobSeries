@@ -4,12 +4,7 @@
     <string name="search_example">Search Show</string>
     <string name="search_shows_loaded">Shows loaded!</string>
     <string name="search_empty">Sorry!\nWe didn\'t found any results!</string>
-    <string name="search_popularity">Popularity</string>
     <string name="search_hint">Type at least 1 letter to begin the search</string>
-    <string name="search_sort_popularity_by">Sort popularity by:</string>
-    <string name="search_crescent">Crescent</string>
-    <string name="search_descending">Descending</string>
-    <string name="search_none">None</string>
 
     <string name="error_generic">Oops! Something went wrong!\nPlease, try again later.</string>
 
@@ -18,8 +13,12 @@
     <string name="show_schedule">Schedule</string>
     <string name="show_schedule_none">Not informed</string>
     <string name="show_episodes">Episodes</string>
+
     <string name="try_again">Try Again</string>
+
+    <!--    FAVORITES-->
     <string name="favorites">Favorites</string>
+    <string name="favorites_sort_by">Sort shows by:</string>
     <string name="show_saved">Show saved!</string>
     <string name="show_removed">Show removed!</string>
 
@@ -27,4 +26,11 @@
         <item quantity="one">%s at %s</item>
         <item quantity="other">%s and %s at %s</item>
     </plurals>
+
+
+    <string-array name="sort_shows">
+        <item>Original Order</item>
+        <item>Alphabetical Crescent</item>
+        <item>Alphabetical Descending</item>
+    </string-array>
 </resources>
