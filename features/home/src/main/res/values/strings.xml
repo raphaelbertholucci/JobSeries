@@ -16,6 +16,7 @@
     <!--    SHOW DETAILS-->
     <string name="show_summary">Summary</string>
     <string name="show_schedule">Schedule</string>
+    <string name="show_schedule_none">Not informed</string>
     <string name="show_episodes">Episodes</string>
     <string name="try_again">Try Again</string>
 

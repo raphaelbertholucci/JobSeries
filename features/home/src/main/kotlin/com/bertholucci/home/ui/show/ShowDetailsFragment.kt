@@ -12,10 +12,10 @@ import androidx.navigation.fragment.navArgs
 import com.bertholucci.domain.helper.fold
 import com.bertholucci.domain.model.Schedule
 import com.bertholucci.domain.model.Show
+import com.bertholucci.home.R
 import com.bertholucci.home.databinding.FragmentShowDetailsBinding
 import com.bertholucci.home.extensions.getAirDate
 import com.bertholucci.home.extensions.getSchedule
-import com.bertholucci.home.extensions.gone
 import com.bertholucci.home.extensions.loadFromUrl
 import com.bertholucci.home.extensions.navProvider
 import com.bertholucci.home.extensions.navigateWithAnimation
@@ -111,13 +111,11 @@ class ShowDetailsFragment : Fragment() {
     }
 
     private fun setupSchedule(schedule: Schedule) {
-        if (schedule.days.none()) {
-            binding.tvSchedule.gone()
-            binding.tvScheduleLabel.gone()
-            return
+        binding.tvSchedule.text = if (schedule.days.none()) {
+            getString(R.string.show_schedule_none)
+        } else {
+            schedule.getSchedule()
         }
-
-        binding.tvSchedule.text = schedule.getSchedule()
     }
 
     private fun setupEpisodes(show: Show) {
