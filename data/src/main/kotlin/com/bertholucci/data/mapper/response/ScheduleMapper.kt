@@ -1,5 +1,6 @@
-package com.bertholucci.data.mapper
+package com.bertholucci.data.mapper.response
 
+import com.bertholucci.data.mapper.BaseMapper
 import com.bertholucci.data.model.ScheduleResponse
 import com.bertholucci.domain.model.Schedule
 

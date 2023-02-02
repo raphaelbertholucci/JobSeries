@@ -1,6 +1,7 @@
 package com.bertholucci.data
 
-import com.bertholucci.data.mapper.ShowMapper
+import com.bertholucci.data.database.DatabaseDao
+import com.bertholucci.data.mapper.response.ShowMapper
 import com.bertholucci.data.model.EpisodesEmbeddedResponse
 import com.bertholucci.data.model.ImageResponse
 import com.bertholucci.data.model.RatingResponse
@@ -16,13 +17,16 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class HomeRepositoryImplTest : BaseTest<ShowRepositoryImpl>() {
+class ShowRepositoryImplTest : BaseTest<ShowRepositoryImpl>() {
 
     @RelaxedMockK
     private lateinit var api: JobSeriesApi
 
+    @RelaxedMockK
+    private lateinit var dao: DatabaseDao
+
     override fun init() {
-        agent = ShowRepositoryImpl(api)
+        agent = ShowRepositoryImpl(api, dao)
     }
 
     @Test

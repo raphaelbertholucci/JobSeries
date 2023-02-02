@@ -33,6 +33,10 @@ dependencies {
     implementation(DependencyInjectionDependencies.koin)
     implementation(DependencyInjectionDependencies.koin_core)
 
+    implementation(DatabaseDependencies.room)
+    implementation(DatabaseDependencies.room_ktx)
+    kapt(DatabaseDependencies.room_compiler)
+
     testImplementation(TestDependencies.junit)
     testImplementation(TestDependencies.mockk)
     testImplementation(TestDependencies.coroutines_test)

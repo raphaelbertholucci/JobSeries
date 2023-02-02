@@ -6,22 +6,95 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bertholucci.domain.helper.JobSeriesResponse
 import com.bertholucci.domain.interactor.GetShowById
+import com.bertholucci.domain.interactor.GetShowByIdFromDB
+import com.bertholucci.domain.interactor.InsertShowIntoDB
+import com.bertholucci.domain.interactor.RemoveShowIntoDB
 import com.bertholucci.domain.model.Show
-import com.bertholucci.home.extensions.response
+import com.bertholucci.home.SingleLiveEvent
+import com.bertholucci.home.extensions.failure
+import com.bertholucci.home.extensions.hideLoading
+import com.bertholucci.home.extensions.showLoading
+import com.bertholucci.home.extensions.success
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 
-class ShowViewModel(showId: Int, private val useCase: GetShowById) : ViewModel() {
+class ShowViewModel(
+    showId: Int,
+    fromFavorites: Boolean,
+    private val useCase: GetShowById,
+    private val insertShowIntoDB: InsertShowIntoDB,
+    private val removeShowIntoDB: RemoveShowIntoDB,
+    private val getShowByIdFromDB: GetShowByIdFromDB
+) : ViewModel() {
 
     private val id = showId
+    private val isFromFavorites = fromFavorites
 
-    private val _show = MutableLiveData<JobSeriesResponse<Show>>()
-    val show: LiveData<JobSeriesResponse<Show>>
-        get() = _show
+    val isFavorite = SingleLiveEvent<Boolean>()
+    val show = MutableLiveData<Show>()
+
+    private val _showResponse = MutableLiveData<JobSeriesResponse<Show>>()
+    val showResponse: LiveData<JobSeriesResponse<Show>>
+        get() = _showResponse
 
     init {
-        getShowById(showId = id)
+        getShowFromDataSource()
     }
 
-    fun getShowById(showId: Int = id) {
-        useCase(showId).response(_show, viewModelScope)
+    fun getShowFromDataSource() {
+        when {
+            isFromFavorites -> getShowFromDB(id)
+            else -> getShowById(showId = id)
+        }
+    }
+
+    fun updateShowState() {
+        show.value?.let { show ->
+            if (isFavorite.value == true) removeShow(show)
+            else insertShow(show)
+        }
+    }
+
+    private fun getShowById(showId: Int = id) {
+        useCase(showId)
+            .onStart { _showResponse.showLoading() }
+            .onCompletion { _showResponse.hideLoading() }
+            .map {
+                _showResponse.success(it)
+                getShowFromDB(it.id)
+            }.catch { _showResponse.failure(it) }
+            .launchIn(viewModelScope)
+    }
+
+    private fun insertShow(show: Show) {
+        insertShowIntoDB(show)
+            .map { isFavorite.postValue(true) }
+            .catch { isFavorite.postValue(false) }
+            .launchIn(viewModelScope)
+    }
+
+    private fun removeShow(show: Show) {
+        removeShowIntoDB(show)
+            .map { isFavorite.postValue(false) }
+            .catch { isFavorite.postValue(true) }
+            .launchIn(viewModelScope)
+    }
+
+    private fun getShowFromDB(id: Int) {
+        getShowByIdFromDB(id)
+            .map {
+                if (isFromFavorites) _showResponse.success(it)
+                isFavorite.postValue(true)
+            }.catch {
+                if (isFromFavorites) _showResponse.failure(it)
+                isFavorite.postValue(false)
+            }.launchIn(viewModelScope)
+    }
+
+    fun updateShow(s: Show) {
+        show.value = s
     }
 }

@@ -1,4 +1,4 @@
-package com.bertholucci.home.ui.search
+package com.bertholucci.home.ui.favorites
 
 import android.os.Bundle
 import android.util.Log
@@ -6,26 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.bertholucci.domain.helper.fold
 import com.bertholucci.domain.model.Show
-import com.bertholucci.home.databinding.FragmentSearchBinding
+import com.bertholucci.home.databinding.FragmentFavoritesBinding
 import com.bertholucci.home.extensions.navProvider
 import com.bertholucci.home.extensions.navigateWithAnimation
 import com.bertholucci.home.ui.ShowsAdapter
+import com.bertholucci.home.ui.search.SearchFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchFragment : Fragment() {
+class FavoritesFragment : Fragment() {
 
+    private val viewModel: FavoritesViewModel by viewModel()
     private val navController: NavController by navProvider()
-    private val viewModel: SearchViewModel by viewModel()
-    private lateinit var adapter: ShowsAdapter
 
     private val binding by lazy {
-        FragmentSearchBinding.inflate(layoutInflater)
+        FragmentFavoritesBinding.inflate(layoutInflater)
     }
+
+    private lateinit var adapter: ShowsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,48 +41,35 @@ class SearchFragment : Fragment() {
         setupUI()
     }
 
-    private fun setupUI() {
-        adapter = ShowsAdapter(
-            onClick = { show ->
-                navController.navigateWithAnimation(
-                    SearchFragmentDirections.toShowDetails(show.id, false)
-                )
-            })
-        binding.rvShows.adapter = adapter
+    private fun addObservers() {
+        viewModel.shows.observe(viewLifecycleOwner) { response ->
+            binding.swipe.isRefreshing = false
+            response.fold(
+                error = ::handleError,
+                success = ::handleSuccess,
+                loading = { if (it) display(loading = true) }
+            )
+        }
     }
 
     private fun addListeners() {
         binding.swipe.setOnRefreshListener {
-            refreshAdapter()
+            viewModel.getShows()
         }
 
         binding.ivBack.setOnClickListener {
             activity?.onBackPressed()
         }
-
-        binding.etSearch.addTextChangedListener {
-            it?.let { text ->
-                when {
-                    text.isEmpty() -> adapter.setList(listOf())
-                    else -> viewModel.getShowsByQuery(query = text.toString())
-                }
-            }
-        }
-
-        binding.error.btTryAgain.setOnClickListener {
-            refreshAdapter()
-        }
     }
 
-    private fun addObservers() {
-        viewModel.showsFromQuery.observe(viewLifecycleOwner) { response ->
-            binding.swipe.isRefreshing = false
-            response.fold(
-                error = ::handleError,
-                loading = { if (it) display(loading = true) },
-                success = ::handleSuccess
-            )
-        }
+    private fun setupUI() {
+        adapter = ShowsAdapter(
+            onClick = { show ->
+                navController.navigateWithAnimation(
+                    SearchFragmentDirections.toShowDetails(show.id, true)
+                )
+            })
+        binding.rvShows.adapter = adapter
     }
 
     private fun handleSuccess(list: List<Show>) {
@@ -109,12 +97,5 @@ class SearchFragment : Fragment() {
         binding.loading.shimmer.isVisible = loading
         binding.error.root.isVisible = error
         binding.empty.root.isVisible = empty
-    }
-
-    private fun refreshAdapter() {
-        binding.etSearch.text.toString().apply {
-            if (isNotEmpty()) viewModel.getShowsByQuery(this)
-            else binding.swipe.isRefreshing = false
-        }
     }
 }

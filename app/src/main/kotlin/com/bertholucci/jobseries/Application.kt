@@ -2,6 +2,7 @@ package com.bertholucci.jobseries
 
 import android.app.Application
 import com.bertholucci.data.di.apiModule
+import com.bertholucci.data.di.databaseModule
 import com.bertholucci.data.di.repositoryModule
 import com.bertholucci.domain.di.domainModule
 import com.bertholucci.home.di.viewModelModule
@@ -16,7 +17,15 @@ class Application : Application() {
         startKoin {
             androidContext(this@Application)
             androidLogger()
-            modules(listOf(apiModule, repositoryModule, domainModule, viewModelModule))
+            modules(
+                listOf(
+                    apiModule,
+                    repositoryModule,
+                    domainModule,
+                    viewModelModule,
+                    databaseModule
+                )
+            )
         }
     }
 }

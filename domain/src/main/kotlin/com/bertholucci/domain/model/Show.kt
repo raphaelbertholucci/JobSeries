@@ -13,7 +13,8 @@ data class Show(
     val rating: Rating,
     val summary: String,
     val image: Image,
-    val episodes: List<Episode>
+    val episodes: List<Episode>,
+    var isFavorite: Boolean = false
 )
 
 data class Schedule(

@@ -38,6 +38,12 @@ object DependencyInjectionDependencies {
     val koin_core by lazy { "io.insert-koin:koin-core:${DependencyInjectionVersions.koin_version}" }
 }
 
+object DatabaseDependencies {
+    val room by lazy { "androidx.room:room-runtime:${DatabaseVersions.room_version}" }
+    val room_ktx by lazy { "androidx.room:room-ktx:${DatabaseVersions.room_version}" }
+    val room_compiler by lazy { "androidx.room:room-compiler:${DatabaseVersions.room_version}" }
+}
+
 object AsyncDependencies {
     val coroutines by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-core:${AsyncVersions.coroutines_version}" }
     val coroutines_android by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-android:${AsyncVersions.coroutines_version}" }

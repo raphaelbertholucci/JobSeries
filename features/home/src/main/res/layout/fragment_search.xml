@@ -20,13 +20,21 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/default_margin" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="@dimen/medium_margin"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_search"
         style="@style/Caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginEnd="@dimen/little_margin"
         android:background="@drawable/bg_white_stroke"
         android:hint="@string/search_example"
         android:padding="@dimen/small_margin"
@@ -34,7 +42,7 @@
         android:textCursorDrawable="@null"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
         app:layout_constraintStart_toStartOf="@id/guide_start"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/iv_back" />
 
     <TextView
         android:id="@+id/tv_hint"
@@ -89,7 +97,7 @@
 
     <include
         android:id="@+id/empty"
-        layout="@layout/search_empty"
+        layout="@layout/empty_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

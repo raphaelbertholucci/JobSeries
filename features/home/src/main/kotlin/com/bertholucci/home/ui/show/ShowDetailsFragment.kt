@@ -16,6 +16,7 @@ import com.bertholucci.home.R
 import com.bertholucci.home.databinding.FragmentShowDetailsBinding
 import com.bertholucci.home.extensions.getAirDate
 import com.bertholucci.home.extensions.getSchedule
+import com.bertholucci.home.extensions.isFavorite
 import com.bertholucci.home.extensions.loadFromUrl
 import com.bertholucci.home.extensions.navProvider
 import com.bertholucci.home.extensions.navigateWithAnimation
@@ -30,7 +31,7 @@ class ShowDetailsFragment : Fragment() {
     private val navController by navProvider()
     private val args: ShowDetailsFragmentArgs by navArgs()
     private val viewModel: ShowViewModel by viewModel {
-        parametersOf(args.id)
+        parametersOf(args.id, args.fromFavorites)
     }
 
     private val binding by lazy {
@@ -50,7 +51,7 @@ class ShowDetailsFragment : Fragment() {
     }
 
     private fun addObservers() {
-        viewModel.show.observe(viewLifecycleOwner) { response ->
+        viewModel.showResponse.observe(viewLifecycleOwner) { response ->
             response.fold(
                 error = ::handleError,
                 loading = {
@@ -58,6 +59,10 @@ class ShowDetailsFragment : Fragment() {
                 },
                 success = ::handleSuccess
             )
+        }
+
+        viewModel.isFavorite.observe(viewLifecycleOwner) { isFavorite ->
+            binding.ivSave.isFavorite(isFavorite)
         }
     }
 
@@ -67,7 +72,11 @@ class ShowDetailsFragment : Fragment() {
         }
 
         binding.error.btTryAgain.setOnClickListener {
-            viewModel.getShowById()
+            viewModel.getShowFromDataSource()
+        }
+
+        binding.ivSave.setOnClickListener {
+            viewModel.updateShowState()
         }
     }
 
@@ -100,6 +109,7 @@ class ShowDetailsFragment : Fragment() {
             setupEpisodes(show)
         }
         display(content = true)
+        viewModel.updateShow(show)
     }
 
     private fun setupGenreAdapter(list: List<String>) {

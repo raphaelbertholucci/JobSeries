@@ -3,7 +3,7 @@ package com.bertholucci.data.repository
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.bertholucci.data.JobSeriesApi
-import com.bertholucci.data.mapper.ShowMapper
+import com.bertholucci.data.mapper.response.ShowMapper
 import com.bertholucci.domain.model.Show
 
 private const val STARTING_PAGE_INDEX = 0

@@ -1,4 +1,4 @@
-package com.bertholucci.home.ui.search
+package com.bertholucci.home.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +13,12 @@ import com.bertholucci.home.databinding.ItemHomeBinding
 import com.bertholucci.home.extensions.getAirDate
 import com.bertholucci.home.extensions.ifNotEmpty
 import com.bertholucci.home.extensions.loadFromUrl
+import com.bertholucci.home.ui.search.SearchDiffUtilCallback
 
-class SearchAdapter(
+class ShowsAdapter(
     private val shows: MutableList<Show> = mutableListOf(),
     private val onClick: (Show) -> Unit
-) : RecyclerView.Adapter<SearchAdapter.HomeViewHolder>() {
+) : RecyclerView.Adapter<ShowsAdapter.HomeViewHolder>() {
 
     fun setList(updatedUserList: List<Show>) {
         val diffResult = DiffUtil.calculateDiff(SearchDiffUtilCallback(shows, updatedUserList))

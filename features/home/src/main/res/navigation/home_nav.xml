@@ -15,11 +15,23 @@
         <action
             android:id="@+id/to_search"
             app:destination="@id/fragment_search" />
+        <action
+            android:id="@+id/to_favorites"
+            app:destination="@id/fragment_favorites" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_search"
         android:name="com.bertholucci.home.ui.search.SearchFragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/to_show_details"
+            app:destination="@id/fragment_show_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_favorites"
+        android:name="com.bertholucci.home.ui.favorites.FavoritesFragment"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/to_show_details"
@@ -36,6 +48,9 @@
         <argument
             android:name="id"
             app:argType="integer" />
+        <argument
+            android:name="fromFavorites"
+            app:argType="boolean" />
 
     </fragment>
 

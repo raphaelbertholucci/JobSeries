@@ -19,6 +19,9 @@
     <string name="show_schedule_none">Not informed</string>
     <string name="show_episodes">Episodes</string>
     <string name="try_again">Try Again</string>
+    <string name="favorites">Favorites</string>
+    <string name="show_saved">Show saved!</string>
+    <string name="show_removed">Show removed!</string>
 
     <plurals name="schedule">
         <item quantity="one">%s at %s</item>

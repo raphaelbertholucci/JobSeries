@@ -47,6 +47,10 @@ class HomeFragment : Fragment() {
             navController.navigateWithAnimation(HomeFragmentDirections.toSearch())
         }
 
+        binding.ivFavorites.setOnClickListener {
+            navController.navigateWithAnimation(HomeFragmentDirections.toFavorites())
+        }
+
         binding.error.btTryAgain.setOnClickListener {
             adapter.refresh()
         }
@@ -57,6 +61,7 @@ class HomeFragment : Fragment() {
             viewModel.shows.collectLatest {
                 adapter.submitData(it)
                 binding.swipe.isRefreshing = false
+                binding.tvLoaded.isVisible = adapter.itemCount == 0
             }
         }
     }
@@ -65,14 +70,10 @@ class HomeFragment : Fragment() {
         adapter = HomeAdapter(
             onClick = { show ->
                 navController.navigateWithAnimation(
-                    HomeFragmentDirections.toShowDetails(show.id)
+                    HomeFragmentDirections.toShowDetails(show.id, false)
                 )
             }
-        ).apply {
-            addLoadStateListener {
-                binding.tvLoaded.isVisible = adapter.itemCount == 0
-            }
-            binding.rvShows.adapter = this
-        }
+        )
+        binding.rvShows.adapter = adapter
     }
 }

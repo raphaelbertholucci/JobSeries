@@ -32,6 +32,10 @@ object DependencyInjectionVersions {
     const val koin_version = "3.2.0"
 }
 
+object DatabaseVersions {
+    const val room_version = "2.4.3"
+}
+
 object AsyncVersions {
     const val coroutines_version = "1.5.2"
 }

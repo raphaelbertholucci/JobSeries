@@ -17,9 +17,9 @@ fun View.gone() {
     isVisible = false
 }
 
-//fun ImageView.isFavorite(isFavorite: Boolean) {
-//    this.setImageResource(
-//        if (isFavorite) R.drawable.search_ic_heart_filled
-//        else R.drawable.search_ic_heart
-//    )
-//}
+fun ImageView.isFavorite(isFavorite: Boolean) {
+    this.setImageResource(
+        if (isFavorite) R.drawable.ic_heart_filled
+        else R.drawable.ic_heart
+    )
+}
