@@ -6,8 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.navArgs
 import com.bertholucci.domain.helper.fold
 import com.bertholucci.domain.model.Schedule
@@ -20,6 +22,8 @@ import com.bertholucci.home.extensions.isFavorite
 import com.bertholucci.home.extensions.loadFromUrl
 import com.bertholucci.home.extensions.navProvider
 import com.bertholucci.home.extensions.navigateWithAnimation
+import com.bertholucci.home.ui.favorites.BUNDLE_KEY_FAVORITES
+import com.bertholucci.home.ui.favorites.REQUEST_KEY_FAVORITES
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -30,6 +34,7 @@ class ShowDetailsFragment : Fragment() {
 
     private val navController by navProvider()
     private val args: ShowDetailsFragmentArgs by navArgs()
+
     private val viewModel: ShowViewModel by viewModel {
         parametersOf(args.id, args.fromFavorites)
     }
@@ -136,6 +141,15 @@ class ShowDetailsFragment : Fragment() {
                     ShowDetailsFragmentDirections.toEpisodeDetails(it.id)
                 )
             }
+        )
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if (viewModel.hasChanged.value == true) setFragmentResult(
+            REQUEST_KEY_FAVORITES, bundleOf(
+                BUNDLE_KEY_FAVORITES to true
+            )
         )
     }
 }

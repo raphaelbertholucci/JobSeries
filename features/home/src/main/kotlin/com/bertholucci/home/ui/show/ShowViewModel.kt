@@ -10,7 +10,6 @@ import com.bertholucci.domain.interactor.GetShowByIdFromDB
 import com.bertholucci.domain.interactor.InsertShowIntoDB
 import com.bertholucci.domain.interactor.RemoveShowIntoDB
 import com.bertholucci.domain.model.Show
-import com.bertholucci.home.SingleLiveEvent
 import com.bertholucci.home.extensions.failure
 import com.bertholucci.home.extensions.hideLoading
 import com.bertholucci.home.extensions.showLoading
@@ -33,7 +32,8 @@ class ShowViewModel(
     private val id = showId
     private val isFromFavorites = fromFavorites
 
-    val isFavorite = SingleLiveEvent<Boolean>()
+    val isFavorite = MutableLiveData<Boolean>()
+    val hasChanged = MutableLiveData(false)
     val show = MutableLiveData<Show>()
 
     private val _showResponse = MutableLiveData<JobSeriesResponse<Show>>()
@@ -55,6 +55,7 @@ class ShowViewModel(
         show.value?.let { show ->
             if (isFavorite.value == true) removeShow(show)
             else insertShow(show)
+            hasChanged.postValue(true)
         }
     }
 

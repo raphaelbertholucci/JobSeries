@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.NavController
 import com.bertholucci.domain.helper.fold
 import com.bertholucci.domain.model.Show
@@ -16,6 +17,9 @@ import com.bertholucci.home.extensions.navigateWithAnimation
 import com.bertholucci.home.ui.ShowsAdapter
 import com.bertholucci.home.ui.search.SearchFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
+const val REQUEST_KEY_FAVORITES = "favorite_show_request"
+const val BUNDLE_KEY_FAVORITES = "favorite_show_bundle"
 
 class FavoritesFragment : Fragment() {
 
@@ -59,6 +63,10 @@ class FavoritesFragment : Fragment() {
 
         binding.ivBack.setOnClickListener {
             activity?.onBackPressed()
+        }
+
+        setFragmentResultListener(REQUEST_KEY_FAVORITES) { _, bundle ->
+            if (bundle.getBoolean(BUNDLE_KEY_FAVORITES)) viewModel.getShows()
         }
     }
 
