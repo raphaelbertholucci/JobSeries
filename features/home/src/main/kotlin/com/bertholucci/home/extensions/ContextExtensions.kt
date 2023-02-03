@@ -8,7 +8,7 @@ import com.bertholucci.home.R
 fun Context.showSortAlert(@ArrayRes arrayId: Int, callback: (Int) -> Unit) {
     AlertDialog.Builder(this).apply {
         setTitle(R.string.favorites_sort_by)
-        setItems(R.array.sort_shows) { dialog, which ->
+        setItems(arrayId) { dialog, which ->
             callback.invoke(which)
             dialog.dismiss()
         }
