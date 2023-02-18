@@ -5,8 +5,8 @@ object Releases {
 }
 
 object Config {
-    const val compileSdkVersion = 32
+    const val compileSdkVersion = 33
     const val minSdkVersion = 23
-    const val targetSdkVersion = 32
+    const val targetSdkVersion = 33
     const val buildTools = "30.0.3"
 }
