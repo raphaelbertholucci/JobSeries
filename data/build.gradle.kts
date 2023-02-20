@@ -8,7 +8,6 @@ android {
     defaultConfig {
         compileSdk = Config.compileSdkVersion
         minSdk = Config.minSdkVersion
-        targetSdk = Config.targetSdkVersion
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

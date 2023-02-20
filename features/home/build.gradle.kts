@@ -10,8 +10,11 @@ android {
     defaultConfig {
         compileSdk = Config.compileSdkVersion
         minSdk = Config.minSdkVersion
-        targetSdk = Config.targetSdkVersion
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
     }
 
     buildFeatures {
@@ -50,4 +53,8 @@ dependencies {
     androidTestImplementation(TestDependencies.mockk_android)
     androidTestImplementation(TestDependencies.test_core)
     androidTestImplementation(TestDependencies.kotlin_test)
+
+    debugImplementation(TestDependencies.fragment_testing) {
+        exclude(group = "androidx.test", module = "core")
+    }
 }

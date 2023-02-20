@@ -50,8 +50,14 @@ object AsyncDependencies {
 }
 
 object TestDependencies {
-    val junit by lazy { "junit:junit:${TestVersions.junit}" }
-    val mockk by lazy { "io.mockk:mockk:${TestVersions.mockk}" }
-    val coroutines_test by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-test:${TestVersions.coroutines_test}" }
     val arch by lazy { "androidx.arch.core:core-testing:${TestVersions.arch}" }
+    val junit by lazy { "junit:junit:${TestVersions.junit}" }
+    val junit_instrumentation by lazy { "androidx.test.ext:junit:${TestVersions.junit_instrumentation}" }
+    val mockk by lazy { "io.mockk:mockk:${TestVersions.mockk}" }
+    val mockk_android by lazy { "io.mockk:mockk-android:${TestVersions.mockk}" }
+    val coroutines_test by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-test:${TestVersions.coroutines_test}" }
+    val espresso by lazy { "androidx.test.espresso:espresso-core:${TestVersions.espresso}" }
+    val test_core by lazy { "androidx.test:core:${TestVersions.test_core}" }
+    val kotlin_test by lazy { "org.jetbrains.kotlin:kotlin-test:${AndroidVersions.kotlin}" }
+    val fragment_testing by lazy { "androidx.fragment:fragment-testing:${TestVersions.fragment_version}" }
 }
