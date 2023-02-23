@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.bertholucci.home"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bertholucci.home">
+
+    <application>
+        <activity
+            android:name="com.bertholucci.home.ui.home.HomeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.App">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

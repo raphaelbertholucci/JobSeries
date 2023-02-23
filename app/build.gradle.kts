@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.tasks.factory.dependsOn
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -32,13 +34,19 @@ android {
         viewBinding = true
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
     testOptions {
         unitTests.isReturnDefaultValues = true
+    }
+
+    lint {
+        warningsAsErrors = true
+        abortOnError = false
+        htmlReport = true
+        checkDependencies = true
+
+        htmlOutput = file("${buildDir}/reports/lint.html")
+
+        project.tasks.check.dependsOn("lint")
     }
 }
 
