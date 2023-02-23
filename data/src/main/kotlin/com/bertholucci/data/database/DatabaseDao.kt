@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.bertholucci.data.model.EpisodeEntity
 import com.bertholucci.data.model.ShowEntity
-import com.bertholucci.domain.model.Episode
 
 @Dao
 interface DatabaseDao {

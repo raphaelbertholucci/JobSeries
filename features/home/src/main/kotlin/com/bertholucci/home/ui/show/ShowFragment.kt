@@ -22,6 +22,7 @@ import com.bertholucci.home.extensions.isFavorite
 import com.bertholucci.home.extensions.loadFromUrl
 import com.bertholucci.home.extensions.navProvider
 import com.bertholucci.home.extensions.navigateWithAnimation
+import com.bertholucci.home.extensions.onBackPressed
 import com.bertholucci.home.ui.favorites.BUNDLE_KEY_FAVORITES
 import com.bertholucci.home.ui.favorites.REQUEST_KEY_FAVORITES
 import com.google.android.flexbox.FlexDirection
@@ -73,7 +74,7 @@ class ShowFragment : Fragment() {
 
     private fun addListeners() {
         binding.ivBack.setOnClickListener {
-            activity?.onBackPressed()
+            activity.onBackPressed()
         }
 
         binding.error.btTryAgain.setOnClickListener {
@@ -105,7 +106,7 @@ class ShowFragment : Fragment() {
             ivPoster.loadFromUrl(show.image.medium)
             tvName.text = show.name
             tvRate.text = show.rating.average
-            tvRuntime.text = "${show.averageRuntime}m"
+            tvRuntime.text = getString(R.string.episode_runtime, show.averageRuntime)
             tvLanguage.text = show.language
             tvReleaseDate.text = show.getAirDate()
             tvSummary.text = Html.fromHtml(show.summary, Html.FROM_HTML_MODE_COMPACT)

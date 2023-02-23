@@ -40,7 +40,7 @@ class EpisodesAdapter(
     override fun getItemCount(): Int = episodes.size
 
     override fun getItemViewType(position: Int): Int {
-        return when(previousSeason) {
+        return when (previousSeason) {
             episodes[position].season -> viewTypeItem
             else -> {
                 previousSeason = episodes[position].season
@@ -61,8 +61,10 @@ class EpisodesAdapter(
         fun bind(episode: Episode) {
             binding.ivPoster.loadFromUrl(episode.image.medium)
             binding.tvTitle.text = episode.name
-            binding.tvEpisode.text = "Episode ${episode.number}"
-            binding.tvRuntime.text = "${episode.runtime}m"
+            binding.tvEpisode.text =
+                itemView.resources.getString(R.string.episode_episode, episode.number)
+            binding.tvRuntime.text =
+                itemView.resources.getString(R.string.episode_runtime, episode.runtime)
 
             binding.root.setOnClickListener {
                 onClick.invoke(episode)
@@ -75,7 +77,7 @@ class EpisodesAdapter(
         private val binding by lazy { ItemHeaderBinding.bind(itemView) }
 
         fun bind(season: Int) {
-            binding.tvSeason.text = "Season $season"
+            binding.tvSeason.text = itemView.resources.getString(R.string.episode_season, season)
         }
     }
 }

@@ -12,10 +12,8 @@ import com.bertholucci.data.mapper.response.ShowMapper
 import com.bertholucci.domain.model.Episode
 import com.bertholucci.domain.model.Show
 import com.bertholucci.domain.repository.ShowRepository
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
 
 class ShowRepositoryImpl(
     private val api: JobSeriesApi,

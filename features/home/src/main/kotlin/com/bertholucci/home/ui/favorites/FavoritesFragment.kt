@@ -15,6 +15,7 @@ import com.bertholucci.home.R
 import com.bertholucci.home.databinding.FragmentFavoritesBinding
 import com.bertholucci.home.extensions.navProvider
 import com.bertholucci.home.extensions.navigateWithAnimation
+import com.bertholucci.home.extensions.onBackPressed
 import com.bertholucci.home.extensions.showSortAlert
 import com.bertholucci.home.ui.ShowsAdapter
 import com.bertholucci.home.ui.search.SearchFragmentDirections
@@ -64,7 +65,7 @@ class FavoritesFragment : Fragment() {
         }
 
         binding.ivBack.setOnClickListener {
-            activity?.onBackPressed()
+            activity.onBackPressed()
         }
 
         binding.ivSort.setOnClickListener {

@@ -18,13 +18,12 @@
     <!--    FAVORITES-->
     <string name="favorites">Favorites</string>
     <string name="favorites_sort_by">Sort shows by:</string>
-    <string name="show_saved">Show saved!</string>
-    <string name="show_removed">Show removed!</string>
 
-    <plurals name="schedule">
-        <item quantity="one">%s at %s</item>
-        <item quantity="other">%s and %s at %s</item>
-    </plurals>
+    <!--    EPISODES-->
+    <string name="episode_season_episode">Season %d | Episode %d</string>
+    <string name="episode_season">Season %d</string>
+    <string name="episode_episode">Episode %d</string>
+    <string name="episode_runtime">%sm</string>
 
     <string-array name="sort_shows">
         <item>Original Order</item>

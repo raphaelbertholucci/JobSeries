@@ -38,7 +38,7 @@ class EpisodeViewModel(
         getEpisodeById(requestValues = episodeId).response(_episode, viewModelScope)
     }
 
-    fun getEpisodeFromDB(episodeId: Int = id) {
+    private fun getEpisodeFromDB(episodeId: Int = id) {
         getEpisodeByIdFromDB(requestValues = episodeId).response(_episode, viewModelScope)
     }
 }

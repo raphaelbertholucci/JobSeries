@@ -2,9 +2,7 @@ package com.bertholucci.data.mapper.entity
 
 import com.bertholucci.data.extensions.fromJson
 import com.bertholucci.data.mapper.BaseMapper
-import com.bertholucci.data.model.EpisodeEntity
 import com.bertholucci.data.model.ShowEntity
-import com.bertholucci.domain.model.Episode
 import com.bertholucci.domain.model.Show
 import com.google.gson.Gson
 

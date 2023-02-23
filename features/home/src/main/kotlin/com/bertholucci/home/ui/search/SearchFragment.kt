@@ -14,6 +14,7 @@ import com.bertholucci.domain.model.Show
 import com.bertholucci.home.databinding.FragmentSearchBinding
 import com.bertholucci.home.extensions.navProvider
 import com.bertholucci.home.extensions.navigateWithAnimation
+import com.bertholucci.home.extensions.onBackPressed
 import com.bertholucci.home.ui.ShowsAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -56,7 +57,7 @@ class SearchFragment : Fragment() {
         }
 
         binding.ivBack.setOnClickListener {
-            activity?.onBackPressed()
+            activity.onBackPressed()
         }
 
         binding.etSearch.addTextChangedListener {

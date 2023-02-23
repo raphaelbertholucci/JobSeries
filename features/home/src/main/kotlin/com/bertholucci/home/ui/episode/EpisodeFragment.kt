@@ -11,10 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bertholucci.domain.helper.fold
 import com.bertholucci.domain.model.Episode
+import com.bertholucci.home.R
 import com.bertholucci.home.databinding.FragmentEpisodeDetailsBinding
 import com.bertholucci.home.extensions.DATE_PATTERN_2
 import com.bertholucci.home.extensions.getDateFormatted
 import com.bertholucci.home.extensions.loadFromUrl
+import com.bertholucci.home.extensions.onBackPressed
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -43,7 +45,7 @@ class EpisodeFragment : Fragment() {
 
     private fun addListeners() {
         binding.ivBack.setOnClickListener {
-            activity?.onBackPressed()
+            activity.onBackPressed()
         }
 
         binding.error.btTryAgain.setOnClickListener {
@@ -82,9 +84,9 @@ class EpisodeFragment : Fragment() {
         binding.apply {
             ivEpisode.loadFromUrl(episode.image.medium)
             tvName.text = episode.name
-            tvSeason.text = "Season ${episode.season} | Episode ${episode.number}"
+            tvSeason.text = getString(R.string.episode_season_episode, episode.season, episode.number)
             tvRate.text = episode.rating.average
-            tvRuntime.text = "${episode.runtime}m"
+            tvRuntime.text = getString(R.string.episode_runtime, episode.runtime)
             tvReleaseDate.text = episode.airDate.getDateFormatted(toPattern = DATE_PATTERN_2)
             tvSummary.text = Html.fromHtml(episode.summary, Html.FROM_HTML_MODE_COMPACT)
         }

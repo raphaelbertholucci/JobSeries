@@ -11,7 +11,6 @@ import com.bertholucci.home.R
 import com.bertholucci.home.extensions.checkRecyclerViewItem
 import com.bertholucci.home.extensions.hasHint
 import com.bertholucci.home.extensions.hasText
-import com.bertholucci.home.extensions.isTextDisplayed
 import com.bertholucci.home.extensions.typeText
 import com.bertholucci.home.helpers.Check
 import com.bertholucci.home.helpers.Execute
@@ -19,7 +18,6 @@ import com.bertholucci.home.helpers.Setup
 import com.bertholucci.home.ui.search.SearchFragment
 import com.bertholucci.home.ui.search.SearchViewModel
 import io.mockk.coEvery
-import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.flow.flow
 import org.koin.androidx.viewmodel.dsl.viewModel
