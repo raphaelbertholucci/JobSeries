@@ -29,7 +29,7 @@ class ShowRepositoryImplTest : BaseTest<ShowRepositoryImpl>() {
     }
 
     @Test
-    fun `get weather information based on current location id`() = runBlockingTest {
+    fun `get show information based on id passed`() = runBlockingTest {
         coEvery { api.getShowById(any()) } returns response
 
         agent.getShowById(0).collect {
