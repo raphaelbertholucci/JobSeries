@@ -2,6 +2,7 @@ package com.bertholucci.home.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.bertholucci.home.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -11,6 +12,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
     }
