@@ -1,7 +1,7 @@
 object AndroidVersions {
-    const val gradle = "7.4.1"
+    const val gradle = "7.4.2"
     const val kotlin = "1.8.10"
-    const val dependency_updates = "0.45.0"
+    const val dependency_updates = "0.46.0"
     const val detekt = "1.22.0"
     const val navigation_safe_args = "2.5.3"
 }
@@ -44,9 +44,9 @@ object TestVersions {
     const val junit = "4.13.2"
     const val junit_instrumentation = "1.1.5"
     const val mockk = "1.13.4"
-    const val coroutines_test = "1.5.1"
+    const val coroutines_test = "1.6.4"
     const val arch = "2.1.0"
     const val espresso = "3.5.1"
     const val test_core = "1.5.0"
-    const val fragment_version = "1.3.6"
+    const val fragment_version = "1.5.5"
 }
